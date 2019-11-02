@@ -1,34 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "tickets/header.html" %}
 
-<head>
-	<title>Bug Juice - tracking human error</title>
-	<meta charset="utf-8" />
-	{% load staticfiles %}
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-	<link rel="stylesheet" href="{% static 'css/index.css' %}">
-	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
-</head>
+{% block content %}
 
-<body>	
-	<div class="ui fixed inverted menu">
-		<div class="ui container">
-			<a href="#" class="header item">
-			<i class="lemon icon"></i> <i>Bug Juice</i>
-			</a>
-			<a href="/resume" class="item">tickets</a>
-			<a href="/portfolio" class="item">bugs</a>
-			<a href="/portfolio" class="item">solutions</a>
-			</div>
-		</div>
-	</div>
+<div class="ui main container">
+  <div class="ui cards">
 
-	{% block content %}
-	{% endblock %}
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	{% block scripts %}
-	{% endblock %}
-</body>
 
-</html>
+    <div class="card">
+      <div class="content">
+        <i class="right floated bug icon"></i>
+        <div class="header">
+          New User Crash
+        </div>
+        <div class="meta">
+          DB Bug
+        </div>
+        <div class="description">
+          When a new user is added with a name that already exists, application crashes.
+        </div>
+      </div>
+      <div class="extra content">
+        <div class="ui three buttons">
+          <div class="ui basic green button">Solve</div>
+          <div class="ui basic yellow button">Review</div>
+          <div class="ui basic red button">Bug</div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+{% endblock %}
