@@ -5,29 +5,7 @@
 <div class="ui main container">
   <div class="ui cards">
 
-
-    <div class="card">
-      <div class="content">
-        <i class="right floated bug icon"></i>
-        <div class="header">
-          New User Crash
-        </div>
-        <div class="meta">
-          DB Bug
-        </div>
-        <div class="description">
-          When a new user is added with a name that already exists, application crashes.
-        </div>
-      </div>
-      <div class="extra content">
-        <div class="ui three buttons">
-          <div class="ui basic green button">Solve</div>
-          <div class="ui basic yellow button">Review</div>
-          <div class="ui basic red button">Bug</div>
-        </div>
-      </div>
-    </div>
-
+    {% include "tickets/ticket.html" %}
 
   </div>
 </div>

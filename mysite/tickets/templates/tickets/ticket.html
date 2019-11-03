@@ -1,0 +1,57 @@
+{% for report in reports %}
+
+<div class="card">
+	<div class="content">
+	  <i class="right floated bug icon"></i>
+	  <div class="header">
+		{{ report.nickname }}
+	  </div>
+	  <div class="meta">
+		{{ report.department }} {{ report.report_type }}
+	  </div>
+	  <div class="description">
+		{{ report.description }}
+	  </div>
+	  <table class="ui table">
+		<tbody>
+			<tr>
+			  <td>
+				<i class="calendar icon"></i>
+				{{ report.time_reported }}
+			  </td>
+			</tr>
+			<tr>
+			  <td>
+				<i class="id badge icon"></i>
+				{{ report.reporter }}
+			  </td>
+			</tr>
+		</tbody>
+	  </table>
+	  <table class="ui table">
+		<tbody>
+			<tr>
+			  <td>
+				<i class="red copy icon"></i><i>Notes</i>
+			  </td>
+			  <td>
+				<i class="red archive icon"></i><i>Logs</i>
+			  </td>
+			  <td>
+				<i class="red folder icon"></i><i>Files</i>
+			  </td>
+			  </td>
+			</tr>
+		</tbody>
+	  </table>
+	</div>
+	<div class="extra content">
+	  <div class="ui three buttons">
+		<div class="ui basic green button">Solve</div>
+		<div class="ui basic yellow button">Review</div>
+		<div class="ui basic red button">Bug</div>
+	  </div>
+	</div>
+</div>
+
+{% endfor %}
