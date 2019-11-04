@@ -19,19 +19,19 @@
               <label for="fruit">Report type:</label>
               <div class="field">
                 <div class="ui radio checkbox">
-                  <input type="radio" name="rtype" checked="" tabindex="0">
+                  <input type="radio" name="rtype" checked="" tabindex="0" class="hidden">
                   <label>Bug</label>
                 </div>
               </div>
               <div class="field">
                 <div class="ui radio checkbox">
-                  <input type="radio" name="rtype" tabindex="1">
+                  <input type="radio" name="rtype" tabindex="1" class="hidden">
                   <label>Vulnerability</label>
                 </div>
               </div>
               <div class="field">
                 <div class="ui radio checkbox">
-                  <input type="radio" name="rtype" tabindex="2">
+                  <input type="radio" name="rtype" tabindex="2" class="hidden">
                   <label>Feature</label>
                 </div>
               </div>
@@ -64,4 +64,15 @@
 
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script>
+$('.ui.dropdown')
+  .dropdown()
+;
+$('.ui.radio.checkbox')
+  .checkbox()
+;
+</script>
 {% endblock %}
