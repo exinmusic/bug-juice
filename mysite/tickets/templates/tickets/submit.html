@@ -1,0 +1,67 @@
+{% extends "tickets/header.html" %}
+
+{% block content %}
+
+<div class="ui main container">
+
+  <div class="ui stackable two column divided grid container">
+    <div class="row">
+      <div class="column">
+        <div class="ui inverted segment">
+          <div class="ui inverted form">
+            <div class="two fields">
+              <div class="field">
+                <label>Report Nickname</label>
+                <input placeholder="Really Aweful Bug" type="text">
+              </div>
+            </div>
+            <div class="inline fields">
+              <label for="fruit">Report type:</label>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="rtype" checked="" tabindex="0">
+                  <label>Bug</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="rtype" tabindex="1">
+                  <label>Vulnerability</label>
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="rtype" tabindex="2">
+                  <label>Feature</label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="field">
+
+              <label>Department</label>
+              <div class="ui selection dropdown">
+                  <input type="hidden" name="gender">
+                  <i class="dropdown icon"></i>
+                  <div class="default text">Whose to blame?</div>
+                  <div class="menu">
+                      <div class="item" data-value="1">Male</div>
+                      <div class="item" data-value="0">Female</div>
+                  </div>
+              </div>
+
+            </div>
+
+            <div class="ui submit button">Open a report</div>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="ui segment">Content</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
