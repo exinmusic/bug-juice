@@ -9,13 +9,11 @@ def tickets(request):
 
 def submit(request):
     if request.method == "POST":
-        TIME_POSTED = datetime.now()
         report_data = {}
         report_data['nickname'] = request.POST.get('nickname')
         report_data['report_type'] = request.POST.get('report_type')
         report_data['department'] = request.POST.get('department')
         report_data['description'] = request.POST.get('description')
-        report_data['time_reported'] = TIME_POSTED.strftime("%m/%d/%Y, %H:%M:%S")
         report_data['reporter'] = 'default_dev'
         print(report_data)
         return render(request, "tickets/submit.html")
