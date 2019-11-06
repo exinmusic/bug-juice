@@ -1,10 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from . import models
+from datetime import datetime
 
 def tickets(request):
     reports = models.Report.objects.all().values()
     return render(request, "tickets/tickets.html", {"reports":reports})
 
 def submit(request):
-    return render(request, "tickets/submit.html")
+    if request.method == "POST":
+        TIME_POSTED = datetime.now()
+        report_data = {}
+        report_data['nickname'] = request.POST.get('nickname')
+        report_data['report_type'] = request.POST.get('report_type')
+        report_data['department'] = request.POST.get('department')
+        report_data['description'] = request.POST.get('description')
+        report_data['time_reported'] = TIME_POSTED.strftime("%m/%d/%Y, %H:%M:%S")
+        report_data['reporter'] = 'default_dev'
+        print(report_data)
+        return render(request, "tickets/submit.html")
+    else:
+        return render(request, "tickets/submit.html")
