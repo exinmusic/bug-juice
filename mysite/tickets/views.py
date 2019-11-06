@@ -16,6 +16,11 @@ def submit(request):
         report_data['description'] = request.POST.get('description')
         report_data['reporter'] = 'default_dev'
         print(report_data)
+        models.Report.objects.create(nickname=report_data['nickname'],
+									report_type=report_data['report_type'],
+									department=report_data['department'],
+									description=report_data['description'],
+                                    reporter=report_data['reporter'])
         return render(request, "tickets/submit.html")
     else:
         return render(request, "tickets/submit.html")
