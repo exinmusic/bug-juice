@@ -11,12 +11,12 @@
           <form id="open_report" action="/submit" method="POST">
           {% csrf_token %}
           <div class="ui inverted form">
-            <div class="two fields">
+
               <div class="field">
                 <label>Report label</label>
                 <input placeholder="Bug Nickname" type="text" name="nickname">
               </div>
-            </div>
+
             <div class="inline fields">
               <label for="fruit">Report type:</label>
               <div class="field">
@@ -27,13 +27,13 @@
               </div>
               <div class="field">
                 <div class="ui radio checkbox">
-                  <input type="radio" name="report_type" tabindex="1" class="hidden" value="vuln">
+                  <input type="radio" name="report_type" tabindex="1" class="hidden" value="vulnerability">
                   <label>Vulnerability</label>
                 </div>
               </div>
               <div class="field">
                 <div class="ui radio checkbox">
-                  <input type="radio" name="report_type" tabindex="2" class="hidden" value="feat">
+                  <input type="radio" name="report_type" tabindex="2" class="hidden" value="feature">
                   <label>Feature</label>
                 </div>
               </div>
@@ -47,10 +47,10 @@
                   <i class="dropdown icon"></i>
                   <div class="default text">Whose to blame?</div>
                   <div class="menu">
-                      <div class="item" data-value="3">Database</div>
-                      <div class="item" data-value="2">Styling</div>
-                      <div class="item" data-value="1">Front-end</div>
-                      <div class="item" data-value="0">Back-end</div>
+                      <div class="item" data-value="Database">Database</div>
+                      <div class="item" data-value="Styling">Styling</div>
+                      <div class="item" data-value="Front-end">Front-end</div>
+                      <div class="item" data-value="Back-end">Back-end</div>
                   </div>
               </div>
 

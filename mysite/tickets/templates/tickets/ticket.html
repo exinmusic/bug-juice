@@ -2,7 +2,7 @@
 
 <div class="card">
 	<div class="content">
-	  <i class="right floated bug icon"></i>
+	  <i class="right floated bug icon"></i><i class="right floated">{{ report.id }}</i>
 	  <div class="header">
 		{{ report.nickname }}
 	  </div>
@@ -49,11 +49,12 @@
 	  <form method="POST" action='/tickets'>
 	  {% csrf_token %}
 	  <div class="ui three buttons">
-		
+		  
 		  <button class="ui basic green button" type="submit" name="manage" value="solve">Solve</button>
 
 		  <button class="ui basic yellow button" type="submit" name="manage" value="review">Review</button>
 
+		  <input hidden="true" name="report_id" value="{{ report.id }}" />
 		  <button class="ui basic red button" type="submit" name="manage" value="bug">Bug</button>
 	  </div>
 	  </form>
