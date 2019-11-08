@@ -46,10 +46,15 @@
 	  </table>
 	</div>
 	<div class="extra content">
+	  <form method="POST" action='/tickets'>
+	  {% csrf_token %}
 	  <div class="ui three buttons">
-		<a class="ui basic green button" href="/submit">Solve</a>
-		<a class="ui basic yellow button" href="/submit">Review</a>
-		<a class="ui basic red button" href="/submit">Bug</a>
+		
+		  <button class="ui basic green button" type="submit">Solve</button>
+
+		  <button class="ui basic yellow button" type="submit">Review</button>
+>
+		  <button class="ui basic red button" type="submit">Bug</button>
 	  </div>
 	  </form>
 	</div>

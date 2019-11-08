@@ -4,8 +4,13 @@ from . import models
 from datetime import datetime
 
 def tickets(request):
-    reports = models.Report.objects.all().values()
-    return render(request, "tickets/tickets.html", {"reports":reports})
+    if request.method == "POST":
+        
+        reports = models.Report.objects.all().values()
+        return render(request, "tickets/tickets.html", {"reports":reports}) 
+    else:
+        reports = models.Report.objects.all().values()
+        return render(request, "tickets/tickets.html", {"reports":reports})
 
 def submit(request):
     if request.method == "POST":
@@ -21,6 +26,7 @@ def submit(request):
 									department=report_data['department'],
 									description=report_data['description'],
                                     reporter=report_data['reporter'])
-        return render(request, "tickets/submit.html")
+        reports = models.Report.objects.all().values()                            
+        return render(request, "tickets/tickets.html", {"reports":reports})
     else:
         return render(request, "tickets/submit.html")
