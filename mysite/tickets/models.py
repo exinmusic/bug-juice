@@ -21,6 +21,8 @@ class Report(models.Model):
     reporter = models.CharField(max_length=80)
     report_type = models.CharField(max_length=6, choices=TYPE_CHOICES, default='bug')
     department = models.CharField(max_length=6, choices=DEPARTMENT_CHOICES, default='back')
+    bug = models.BooleanField(default=False)
+    solved = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nickname
