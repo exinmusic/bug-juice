@@ -5,7 +5,7 @@ from datetime import datetime
 
 def tickets(request):
     if request.method == "POST":
-        
+        print(request.POST.get('manage'))
         reports = models.Report.objects.all().values()
         return render(request, "tickets/tickets.html", {"reports":reports}) 
     else:
