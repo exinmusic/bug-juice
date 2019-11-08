@@ -46,3 +46,8 @@ def tickets(request):
     else:
         reports = models.Report.objects.all().filter(bug=False).values()
         return render(request, "tickets/tickets.html", {"reports":reports})
+
+# SOLVE BUGS
+def bugs(request):
+    all_bugs = models.Report.objects.all().filter(bug=True).values()
+    return render(request, "tickets/bugs.html")
