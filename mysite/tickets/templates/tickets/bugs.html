@@ -3,21 +3,16 @@
 {% block content %}
 
 <div class="ui main container">
-
     <table class="ui inverted red very compact table">
         <thead>
-          <tr><th>Bug Name</th>
-          <th>Type</th>
-          <th>Description</th>
-        </tr></thead><tbody>
           <tr>
-            <td>Killer Bug</td>
-            <td>Front-End</td>
-            <td>This thing looks like total not so good. Someone with graphic design skills should help out doing the thing.</td>
+            <th>Bug Name</th>
+            <th>Type</th>
+            <th>Description</th>
           </tr>
-        </tbody>
-      </table>
-
+        </thead>
+        {% include "tickets/bug.html" %}
+    </table>
 </div>
 
 {% endblock %}

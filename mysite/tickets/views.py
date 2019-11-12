@@ -19,8 +19,8 @@ def submit(request):
 									department=report_data['department'],
 									description=report_data['description'],
                                     reporter=report_data['reporter'])
-        reports = models.Report.objects.all().filter(bug=False).values()                            
-        return render(request, "tickets/tickets.html", {"reports":reports})
+        all_reports = models.Report.objects.all().filter(bug=False).values()                            
+        return render(request, "tickets/tickets.html", {"reports":all_reports})
     # GET
     else:
         return render(request, "tickets/submit.html")
@@ -40,14 +40,14 @@ def tickets(request):
             except:
                 print('No report by that ID found...')
 
-            reports = models.Report.objects.all().filter(bug=False).values()
-            return render(request, "tickets/tickets.html", {"reports":reports})
+            all_reports = models.Report.objects.all().filter(bug=False).values()
+            return render(request, "tickets/tickets.html", {"reports":all_reports})
     # GET
     else:
-        reports = models.Report.objects.all().filter(bug=False).values()
-        return render(request, "tickets/tickets.html", {"reports":reports})
+        all_reports = models.Report.objects.all().filter(bug=False).values()
+        return render(request, "tickets/tickets.html", {"reports":all_reports})
 
 # SOLVE BUGS
 def bugs(request):
     all_bugs = models.Report.objects.all().filter(bug=True).values()
-    return render(request, "tickets/bugs.html")
+    return render(request, "tickets/bugs.html", {"bugs":all_bugs})
