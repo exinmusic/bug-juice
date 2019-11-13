@@ -21,6 +21,8 @@ class Report(models.Model):
     reporter = models.CharField(max_length=80)
     report_type = models.CharField(max_length=16, choices=TYPE_CHOICES, default='bug')
     department = models.CharField(max_length=16, choices=DEPARTMENT_CHOICES, default='back')
+    error_log = models.TextField(max_length=600, default="")
+    note = models.TextField(max_length=600, default="")
     bug = models.BooleanField(default=False)
     solved = models.BooleanField(default=False)
 

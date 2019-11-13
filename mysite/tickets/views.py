@@ -13,12 +13,16 @@ def submit(request):
         report_data['department'] = request.POST.get('department')
         report_data['description'] = request.POST.get('description')
         report_data['reporter'] = 'default_dev'
+        report_data['error_log'] = request.POST.get('error_log')
+        report_data['note'] = request.POST.get('note')
         print(report_data)
         models.Report.objects.create(nickname=report_data['nickname'],
 									report_type=report_data['report_type'],
 									department=report_data['department'],
 									description=report_data['description'],
-                                    reporter=report_data['reporter'])
+                                    reporter=report_data['reporter'],
+                                    error_log=report_data['error_log'],
+                                    note=report_data['note'])
         all_reports = models.Report.objects.all().filter(bug=False).values()                            
         return render(request, "tickets/tickets.html", {"reports":all_reports})
     # GET

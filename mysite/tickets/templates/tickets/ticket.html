@@ -32,14 +32,23 @@
 		<tbody>
 			<tr>
 			  <td>
+				{% if report.note %}
+				<i class="green copy icon"></i><i>Notes</i>
+				{% endif %}
+				{% if not report.note %}
 				<i class="red copy icon"></i><i>Notes</i>
+				{% endif %}
 			  </td>
 			  <td>
+				{% if report.error_log %}
+				<i class="green archive icon"></i><i>Logs</i>
+				{% endif %}
+				{% if not report.error_log %}
 				<i class="red archive icon"></i><i>Logs</i>
+				{% endif %}
 			  </td>
 			  <td>
 				<i class="red folder icon"></i><i>Files</i>
-			  </td>
 			  </td>
 			</tr>
 		</tbody>
