@@ -1,0 +1,18 @@
+{% extends "tickets/header.html" %}
+
+{% block content %}
+
+<div class="ui main container">
+    <table class="ui inverted green very compact table">
+        <thead>
+          <tr>
+            <th>Solution</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        {% include "tickets/solution.html" %}
+    </table>
+</div>
+
+{% endblock %}

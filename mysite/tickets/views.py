@@ -53,5 +53,10 @@ def tickets(request):
 
 # SOLVE BUGS
 def bugs(request):
-    all_bugs = models.Report.objects.all().filter(bug=True).values()
+    all_bugs = models.Report.objects.all().filter(bug=True, solved=False).values()
     return render(request, "tickets/bugs.html", {"bugs":all_bugs})
+
+# VIEW SOLUTIONS
+def solutions(request):
+    all_solutions = models.Report.objects.all().filter(solved=True).values()
+    return render(request, "tickets/solutions.html", {"solutions":all_solutions})
