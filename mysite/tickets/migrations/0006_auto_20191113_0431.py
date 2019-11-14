@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='report',
             name='log',
-            field=models.TextField(default=None, max_length=600),
+            field=models.TextField(default='', max_length=600),
         ),
         migrations.AddField(
             model_name='report',
             name='note',
-            field=models.TextField(default=None, max_length=600),
+            field=models.TextField(default='', max_length=600),
         ),
     ]
