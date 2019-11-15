@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from . import models
-from datetime import datetime
 
 # SUBMIT TICKET
 def submit(request):
