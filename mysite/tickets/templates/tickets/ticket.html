@@ -59,12 +59,12 @@
 	  {% csrf_token %}
 	  <div class="ui three buttons">
 		  
-		  <button class="ui basic green button" type="submit" name="manage" value="solve">Solve</button>
+		  <button class="ui yellow button" type="submit" name="manage" value="solve">Solve</button>
 
-		  <button class="ui basic yellow button" type="submit" name="manage" value="review">Review</button>
+		  <button class="ui yellow button" type="submit" name="manage" value="review">Review</button>
 
 		  <input hidden="true" name="report_id" value="{{ report.id }}" />
-		  <button class="ui basic red button" type="submit" name="manage" value="bug">Bug</button>
+		  <button class="ui yellow button" type="submit" name="manage" value="bug">Bug</button>
 	  </div>
 	  </form>
 	</div>
