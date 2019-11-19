@@ -13,10 +13,9 @@ def submit(request):
         report_data['report_type'] = request.POST.get('report_type')
         report_data['department'] = request.POST.get('department')
         report_data['description'] = request.POST.get('description')
-        report_data['reporter'] = 'default_dev'
+        report_data['reporter'] = request.user.username
         report_data['error_log'] = request.POST.get('error_log')
         report_data['note'] = request.POST.get('note')
-        print(report_data)
         models.Report.objects.create(nickname=report_data['nickname'],
 									report_type=report_data['report_type'],
 									department=report_data['department'],
