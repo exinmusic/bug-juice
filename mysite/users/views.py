@@ -1,7 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as login_user
 from . import models
 
 # LOGIN
 def login(request):
-    return render(request, "users/login.html")
+    # POST
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        print(username)
+        if user is not None:
+            login_user(request, user)
+            return redirect("/tickets")
+        else:
+            # Return an 'invalid login' error message.
+            return render(request, "users/login.html")
+    # GET
+    else:
+        return render(request, "users/login.html")

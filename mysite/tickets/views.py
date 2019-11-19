@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from . import models
 
 # SUBMIT TICKET
+@login_required
 def submit(request):
     # POST
     if request.method == "POST":
@@ -29,6 +31,7 @@ def submit(request):
         return render(request, "tickets/submit.html")
 
 # MANAGE TICKETS
+@login_required
 def tickets(request):
     # POST
     if request.method == "POST":
@@ -51,11 +54,13 @@ def tickets(request):
         return render(request, "tickets/tickets.html", {"reports":all_reports})
 
 # SOLVE BUGS
+@login_required
 def bugs(request):
     all_bugs = models.Report.objects.all().filter(bug=True, solved=False).values()
     return render(request, "tickets/bugs.html", {"bugs":all_bugs})
 
 # VIEW SOLUTIONS
+@login_required
 def solutions(request):
     all_solutions = models.Report.objects.all().filter(solved=True).values()
     return render(request, "tickets/solutions.html", {"solutions":all_solutions})
