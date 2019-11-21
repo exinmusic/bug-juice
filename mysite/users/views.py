@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_user
+from django.contrib.auth import logout as logout_user
 from . import models
 
 # LOGIN
@@ -21,3 +22,7 @@ def login(request):
     # GET
     else:
         return render(request, "users/login.html")
+
+def logout(request):
+    logout_user(request)
+    return redirect("/users/login")
