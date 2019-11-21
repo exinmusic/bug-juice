@@ -21,7 +21,10 @@ def login(request):
             return render(request, "users/login.html")
     # GET
     else:
-        return render(request, "users/login.html")
+        if request.GET.get('next'):
+            return render(request, "users/login_required.html")
+        else:
+            return render(request, "users/login.html")
 
 def logout(request):
     logout_user(request)
