@@ -63,3 +63,8 @@ def bugs(request):
 def solutions(request):
     all_solutions = models.Report.objects.all().filter(solved=True).values()
     return render(request, "tickets/solutions.html", {"solutions":all_solutions})
+
+# REVIEW REPORT
+@login_required
+def review(request):
+    return render(request, "tickets/review.html")
