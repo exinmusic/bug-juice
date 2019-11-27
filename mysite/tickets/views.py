@@ -3,6 +3,10 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from . import models
 
+# HOME
+def home(request):
+    return render(request, "tickets/home.html")
+
 # SUBMIT TICKET
 @login_required
 def submit(request):
@@ -63,8 +67,3 @@ def bugs(request):
 def solutions(request):
     all_solutions = models.Report.objects.all().filter(solved=True).values()
     return render(request, "tickets/solutions.html", {"solutions":all_solutions})
-
-# REVIEW REPORT
-@login_required
-def review(request):
-    return render(request, "tickets/review.html")
