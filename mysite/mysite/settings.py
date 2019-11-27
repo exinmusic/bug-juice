@@ -25,7 +25,8 @@ SECRET_KEY = 'ezwulykc0#%55dxiy_unihu201^s61^2bv0bq^y4tswb4b!82#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['juice-env.regt65sjib.us-west-2.elasticbeanstalk.com',
+                '127.0.0.1']
 
 
 # Application definition
@@ -122,3 +123,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/users/login'
+
+STATIC_ROOT= os.path.join(BASE_DIR,'static/')
