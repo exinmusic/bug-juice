@@ -23,7 +23,7 @@
       </h2>
       <form class="ui large form" action="/users/login" method="POST">
         {% csrf_token %}
-        <div class="ui segment">
+        <div class="ui inverted segment">
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
@@ -44,7 +44,7 @@
       {% block messages %}
       {% endblock %}
   
-      <div class="ui message">
+      <div class="ui black message">
         <a href="#">Sign up</a> and start tracking bugs!
       </div>
     </div>
