@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['juice-env.regt65sjib.us-west-2.elasticbeanstalk.com',
 INSTALLED_APPS = [
     'users',
     'tickets',
+    'reports',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
