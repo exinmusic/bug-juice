@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from . import models
@@ -41,6 +41,7 @@ def tickets(request):
         manage_req = request.POST.get('manage')
         report_id = request.POST.get('report_id')
         print("Ticket management...")
+        # USERS SELECTS bug
         if manage_req == "bug":
             try:
                 entry = models.Report.objects.get(id=report_id)
@@ -48,6 +49,8 @@ def tickets(request):
                 entry.save()
             except:
                 print('No report by that ID found...')
+        if manage_req == "review":
+            return redirect("reports/"+report_id)
 
             all_reports = models.Report.objects.all().filter(bug=False).values()
             return render(request, "tickets/tickets.html", {"reports":all_reports})
