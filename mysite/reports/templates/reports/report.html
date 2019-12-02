@@ -4,21 +4,39 @@
 
 <div class="ui main container">
     
-      <div class="ui warning form segment">
-          <div class="ui huge header">{{ report.nickname }}</div>
-          <div class="ui statistics">
-              <div class="statistic float right">
-                <div class="value">
-                  <i class="bug icon"></i> {{ report.id }}
+      <div class="ui segment">
+
+            <div class="ui equal width padded grid">
+              <div class="row">
+                <div class="yellow column">
+                    <div class="ui huge header">{{ report.nickname }}</div>
+                    {{ report.description }}
+                </div>
+                <div class="column">
+                    <div class="ui right floated huge header"><i class="bug icon"></i></div>
+                </div>
+              </div>
+              <div class=" row">
+                <div class="grey column">
+                    {{ report.time_reported }}
+                </div>
+                <div class="column">
+                    
+                </div>
+                <div class="column">
+                    
                 </div>
               </div>
             </div>
+
+          
           <div class="ui segment">
-            <div class="ui top attached label">Top Labeled</div>
-              <a class="ui teal image label">
-                Some Name
-                <span class="detail">Group</span>
-              </a>
+            <div class="ui top attached label"><i class="copy icon"></i>Notes</div>
+            <pre class="content">{{ report.note }}</pre>
+          </div>
+          <div class="ui segment">
+            <div class="ui top attached label"><i class="archive icon"></i>Logs</div>
+            <pre class="content">{{ report.error_log }}</pre>
           </div>
       </div>
 
