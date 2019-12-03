@@ -20,24 +20,43 @@
                 <div class="grey column">
                     {{ report.time_reported }}
                 </div>
-                <div class="column">
-                    
-                </div>
-                <div class="column">
-                    
-                </div>
+                <div class="column"></div>
+                <div class="column"></div>
               </div>
             </div>
 
+            <div class="ui ordered steps">
+              <a class="completed step">
+                <div class="content">
+                  <div class="title">Ticket Open</div>
+                  <div class="description">Submitted for review.</div>
+                </div>
+              </a>
+              <a class="step">
+                <div class="content">
+                  <div class="title">Bug Status</div>
+                  <div class="description">Currently debugging.</div>
+                </div>
+              </a>
+              <a class="disabled step">
+                <div class="content">
+                  <div class="title">Solved</div>
+                  <div class="description">Solution documented.</div>
+                </div>
+              </a>
+            </div>
           
           <div class="ui segment">
             <div class="ui top attached label"><i class="copy icon"></i>Notes</div>
             <pre class="content">{{ report.note }}</pre>
           </div>
+
           <div class="ui segment">
             <div class="ui top attached label"><i class="archive icon"></i>Logs</div>
             <pre class="content">{{ report.error_log }}</pre>
           </div>
+
+
       </div>
 
 </div>
