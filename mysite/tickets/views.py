@@ -47,6 +47,8 @@ def tickets(request):
                 entry = models.Report.objects.get(id=report_id)
                 entry.bug = True
                 entry.save()
+                all_reports = models.Report.objects.all().filter(bug=False).values()
+                return render(request, "tickets/tickets.html", {"reports":all_reports})
             except:
                 print('No report by that ID found...')
         if manage_req == "review":
