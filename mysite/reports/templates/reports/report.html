@@ -18,7 +18,13 @@
               </div>
               <div class=" row">
                 <div class="grey column">
-                    {{ report.time_reported }}
+                    <div class="ui yellow label">
+                        <!-- <img src="/images/avatar/small/justen.jpg"> ADD AVATAR -->
+                        <i class="ui user icon"></i>
+                        {{ report.reporter }}
+                    </div>
+                    opened this on 
+                    <i>{{ report.time_reported }}</i> 
                 </div>
                 <div class="column"></div>
                 <div class="column"></div>
@@ -26,24 +32,7 @@
             </div>
 
             <div class="ui ordered steps">
-              <a class="completed step">
-                <div class="content">
-                  <div class="title">Ticket Open</div>
-                  <div class="description">Submitted for review.</div>
-                </div>
-              </a>
-              <a class="step">
-                <div class="content">
-                  <div class="title">Bug Status</div>
-                  <div class="description">Currently debugging.</div>
-                </div>
-              </a>
-              <a class="disabled step">
-                <div class="content">
-                  <div class="title">Solved</div>
-                  <div class="description">Solution documented.</div>
-                </div>
-              </a>
+              {% include "reports/progress.html" %}
             </div>
           
           <div class="ui segment">
@@ -56,6 +45,19 @@
             <pre class="content">{{ report.error_log }}</pre>
           </div>
 
+
+          <form method="POST" action='/tickets'>
+            {% csrf_token %}
+            <div class="ui three buttons">
+              
+              <button class="ui yellow button" type="submit" name="manage" value="solve">Dismiss & Close</button>
+        
+              <div class="or"></div>
+        
+              <input hidden="true" name="report_id" value="{{ report.id }}" />
+              <button class="ui yellow button" type="submit" name="manage" value="bug">Confirm as Bug</button>
+            </div>
+          </form>
 
       </div>
 
