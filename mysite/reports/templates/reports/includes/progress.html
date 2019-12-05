@@ -1,0 +1,43 @@
+{% if report.bug %}
+
+<div class="disabled step">
+	<div class="content">
+		<div class="title">Ticket Open</div>
+		<div class="description">Submitted for review.</div>
+	</div>
+	</div>
+	<div class="step">
+	<div class="content">
+		<div class="title">Bug Status</div>
+		<div class="description">Currently debugging.</div>
+	</div>
+	</div>
+	<div class="disabled step">
+	<div class="content">
+		<div class="title">Solved</div>
+		<div class="description">Solution documented.</div>
+	</div>
+</div>
+
+{% else %}
+
+<div class="step">
+	<div class="content">
+		<div class="title">Ticket Open</div>
+		<div class="description">Submitted for review.</div>
+	</div>
+	</div>
+	<div class="disabled step">
+	<div class="content">
+		<div class="title">Bug Status</div>
+		<div class="description">Currently debugging.</div>
+	</div>
+	</div>
+	<div class="disabled step">
+	<div class="content">
+		<div class="title">Solved</div>
+		<div class="description">Solution documented.</div>
+	</div>
+</div>
+
+{% endif %}

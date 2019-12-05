@@ -32,7 +32,7 @@
             </div>
 
             <div class="ui ordered steps">
-              {% include "reports/progress.html" %}
+              {% include "reports/includes/progress.html" %}
             </div>
           
           <div class="ui segment">
@@ -46,18 +46,7 @@
           </div>
 
 
-          <form method="POST" action='/tickets'>
-            {% csrf_token %}
-            <div class="ui three buttons">
-              
-              <button class="ui yellow button" type="submit" name="manage" value="solve">Dismiss & Close</button>
-        
-              <div class="or"></div>
-        
-              <input hidden="true" name="report_id" value="{{ report.id }}" />
-              <button class="ui yellow button" type="submit" name="manage" value="bug">Confirm as Bug</button>
-            </div>
-          </form>
+          {% include "reports/includes/buttons.html" %}
 
       </div>
 

@@ -1,0 +1,24 @@
+{% if not report.bug %}
+
+<form method="POST" action='/tickets'>
+    {% csrf_token %}
+    <div class="ui two buttons">
+      
+      <button class="ui yellow button" type="submit" name="manage" value="solve"><h3 class="ui">Dismiss & Close</h3></button>
+
+      <div class="or"></div>
+
+      <input hidden="true" name="report_id" value="{{ report.id }}" />
+      <button class="ui yellow button" type="submit" name="manage" value="bug"><h3 class="ui">Confirm Bug</h1></button>
+    </div>
+</form>
+
+{% else %}
+<form method="POST" action='/tickets'>
+    {% csrf_token %}
+    <div class="ui two buttons">
+        <button class="ui green button" type="submit" name="manage" value="solve"><h2 class="ui">Solve</h2></button>
+    </div>
+</form>
+
+{% endif %}
