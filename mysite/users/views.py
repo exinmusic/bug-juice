@@ -32,3 +32,7 @@ def logout(request):
 
 def signup(request):
     return render(request, "users/signup.html")
+
+def profile(request):
+    avatar = request.user.profile.avatar
+    return render(request, "users/profile.html", {"avatar":avatar})
