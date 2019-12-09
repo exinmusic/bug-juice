@@ -28,3 +28,9 @@ class Report(models.Model):
 
     def __str__(self):
         return self.nickname
+
+class Comment(models.Model):
+    author = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
