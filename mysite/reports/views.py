@@ -5,5 +5,19 @@ from . import models
 
 @login_required
 def report(request, rid):
-    r = models.Report.objects.all().filter(id=rid).values()
-    return render(request, "reports/report.html", {"report":r[0]})
+    # CURRENT REPORT
+    r = models.Report.objects.filter(id=rid)[0]
+
+    # POST
+    if request.method == "POST":
+        models.Comment.objects.create(
+            author = request.user,
+            text = request.POST.get('text'),
+            report = r
+        )
+
+    # GET
+    else:
+        return render(request, "reports/report.html", {"report":r})
+
+

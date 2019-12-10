@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 TYPE_CHOICES = (
 	("Bug","Bug"),
@@ -30,7 +31,11 @@ class Report(models.Model):
         return self.nickname
 
 class Comment(models.Model):
-    author = models.CharField(max_length=200)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
+    created_date = models.DateTimeField(auto_now_add=True, blank=True)
     approved_comment = models.BooleanField(default=False)
+    report = models.ForeignKey(Report, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.created_date)

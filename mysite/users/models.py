@@ -7,6 +7,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     avatar = models.URLField(max_length=250)
 
+    def __str__(self):
+        return self.user
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kargs):
     if created:
