@@ -6,7 +6,7 @@ from . import models
 @login_required
 def report(request, rid):
     # CURRENT REPORT
-    r = models.Report.objects.filter(id=rid)[0]
+    r = models.Report.objects.get(id=rid)
 
     # POST
     if request.method == "POST":
@@ -15,9 +15,9 @@ def report(request, rid):
             text = request.POST.get('text'),
             report = r
         )
-
+        return render(request, "reports/report.html", {"report":r, "comments":r.comment_set.all()})
     # GET
     else:
-        return render(request, "reports/report.html", {"report":r})
+        return render(request, "reports/report.html", {"report":r, "comments":r.comment_set.all()})
 
 
