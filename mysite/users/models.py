@@ -8,7 +8,7 @@ class Profile(models.Model):
     avatar = models.URLField(max_length=250)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kargs):
