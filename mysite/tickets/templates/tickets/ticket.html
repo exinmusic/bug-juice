@@ -2,7 +2,7 @@
 
 <div class="yellow card">
 	<div class="content">
-	  <i class="right floated bug icon"></i>
+	  {% include "includes/icon.html" %}
 	  <div class="header">
 		{{ report.nickname }}
 	  </div>
@@ -48,7 +48,12 @@
 				{% endif %}
 			  </td>
 			  <td>
-				<i class="red folder icon"></i><i>Files</i>
+				{% if report.comment_set.values %}
+				<i class="green comment icon"></i><i>Comments</i>
+				{% endif %}
+				{% if not report.comment_set.values %}
+				<i class="red comment icon"></i><i>Comments</i>
+				{% endif %}
 			  </td>
 			</tr>
 		</tbody>

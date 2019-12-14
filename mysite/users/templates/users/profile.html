@@ -9,17 +9,21 @@
 
         <div class="three wide center aligned yellow column">
           <div class="ui circular image">
-            <img src="{{ user.profile.avatar }}">
-          </div>             
+            <img src="{{ user.profile.avatar }}"/>
+          </div>
+          <a>Change Avatar</a>             
         </div>
 
         <div class="ui form thirteen wide column">
           <div class="field">
-            <input type="text" placeholder="{{ user.username }}">
+            <input type="text" value="{{ user.username }}">
           </div>
           <div class="field">
-            <input type="text" placeholder="{{ user.username }}">
-          </div>             
+            <input type="text" placeholder="Name">
+          </div>  
+          <div class="field">
+            <input type="text" placeholder="email">
+          </div>                  
         </div>
 
       </div>      
@@ -27,6 +31,7 @@
 
 
     <div class='ui segment'>
+      <div class="ui top attached label">User Feed</div>
       <div class="ui two column stackable grid">
         <div class="column">
           <div class="ui feed">
