@@ -3,11 +3,50 @@
 {% block content %}
 
 <div class="ui main container">
-  <div class="ui inverted vertical masthead center aligned segment">
-    <div class="ui text container">
-     
-     <img src="{{avatar}}">
+  <div class="ui segment">
+    <div class="ui inverted segment">
+      <div class="ui grid">
+
+        <div class="three wide center aligned yellow column">
+          <div class="ui circular image">
+            <img src="{{ user.profile.avatar }}">
+          </div>             
+        </div>
+
+        <div class="ui form thirteen wide column">
+          <div class="field">
+            <input type="text" placeholder="{{ user.username }}">
+          </div>
+          <div class="field">
+            <input type="text" placeholder="{{ user.username }}">
+          </div>             
+        </div>
+
+      </div>      
     </div>
+
+
+    <div class='ui segment'>
+      <div class="ui two column stackable grid">
+        <div class="column">
+          <div class="ui feed">
+            {% for comment in user.comment_set.all %}
+            <div class="event">
+              <div class="label">
+                <i class="ui comment icon"></i>
+              </div>
+              <div class="content">
+                <div class="summary">
+                  {{ comment.text }} on {{ comment.report }}
+                </div>
+              </div>
+            </div> 
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
