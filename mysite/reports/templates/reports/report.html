@@ -19,9 +19,8 @@
               <div class=" row">
                 <div class="grey column">
                     <div class="ui yellow label">
-                        <!-- <img src="{{ user.profile.avatar }}"> ADD AVATAR -->
-                        <i class="ui user icon"></i>
-                        {{ report.reporter }}
+                        <img src="{{ report.author.profile.avatar }}">
+                        {{ report.author }}
                     </div>
                     opened this on 
                     <i>{{ report.time_reported }}</i> 
