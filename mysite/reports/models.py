@@ -19,7 +19,7 @@ DEPARTMENT_CHOICES = (
 class Report(models.Model):
     nickname = models.CharField(max_length=25)
     description = models.TextField(max_length=600)
-    time_reported = models.DateTimeField(auto_now_add=True, blank=True)
+    created_date = models.DateTimeField(auto_now_add=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     report_type = models.CharField(max_length=16, choices=TYPE_CHOICES, default='bug')
     department = models.CharField(max_length=16, choices=DEPARTMENT_CHOICES, default='back')

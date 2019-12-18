@@ -35,14 +35,23 @@
       <div class="ui two column stackable grid">
         <div class="column">
           <div class="ui feed">
-            {% for comment in user.comment_set.all %}
+            {% for event in feed %}
             <div class="event">
+              {% if event.text %}
               <div class="label">
                 <i class="ui comment icon"></i>
               </div>
               <div class="content">
                 <div class="summary">
-                  {{ comment.text }} on {{ comment.report }}
+                  {{ event.text }} on {{ event.report }}
+                  {% else %}
+                  <div class="label">
+                    <i class="ui copy icon"></i>
+                  </div>
+                  <div class="content">
+                    <div class="summary">
+                  Opened report {{event.nickname}}
+                  {% endif %}
                 </div>
               </div>
             </div> 
@@ -51,7 +60,7 @@
         </div>
       </div>
     </div>
-
+    
   </div>
 </div>
 

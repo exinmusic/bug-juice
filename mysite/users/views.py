@@ -5,6 +5,7 @@ from django.contrib.auth import login as login_user
 from django.contrib.auth import logout as logout_user
 from django.contrib.auth.decorators import login_required
 from . import models
+from itertools import chain
 
 # LOGIN
 def login(request):
@@ -37,4 +38,14 @@ def signup(request):
 
 @login_required
 def profile(request):
-    return render(request, "users/profile.html")
+
+
+    comments = request.user.comment_set.all()
+    reports = request.user.report_set.all()
+    feed = sorted(
+        chain(comments,reports),
+        key = lambda instance: instance.created_date
+    )
+
+
+    return render(request, "users/profile.html", {"feed":feed})
