@@ -15,9 +15,9 @@ def report(request, rid):
             text = request.POST.get('text'),
             report = r
         )
-        return render(request, "reports/report.html", {"report":r, "comments":r.comment_set.all()})
+        return render(request, "reports/report.html", {"report":r})
     # GET
     else:
-        return render(request, "reports/report.html", {"report":r, "comments":r.comment_set.all()})
+        return render(request, "reports/report.html", {"report":r})
 
 

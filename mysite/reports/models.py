@@ -17,7 +17,7 @@ DEPARTMENT_CHOICES = (
 )
 
 class Report(models.Model):
-    nickname = models.CharField(max_length=25)
+    name = models.CharField(max_length=25)
     description = models.TextField(max_length=600)
     created_date = models.DateTimeField(auto_now_add=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
@@ -29,7 +29,7 @@ class Report(models.Model):
     solved = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.nickname
+        return self.name
 
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -40,3 +40,13 @@ class Comment(models.Model):
 
     def __str__(self):
         return str(self.created_date)
+
+class Todo(models.Model):
+    name = models.CharField(max_length=25)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    report = models.ForeignKey(Report, on_delete=models.CASCADE)
+    completed = models.BooleanField(default=False)
+    created_date = models.DateTimeField(auto_now_add=True, blank=True)
+
+    def __str__(self):
+        return self.name

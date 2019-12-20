@@ -9,7 +9,7 @@
             <div class="ui equal width padded grid">
               <div class="row">
                 <div class="yellow column">
-                    <div class="ui huge header">{{ report.nickname }}</div>
+                    <div class="ui huge header">{{ report.name }}</div>
                     {{ report.description }}
                 </div>
                 <div class="column">
@@ -47,7 +47,7 @@
           <div class="ui segment">
             <div class="ui comments">
               
-              {% for comment in comments %}
+              {% for comment in report.comment_set.all %}
               <div class="comment">
                 <a class="avatar">
                   <img src="{{ comment.author.profile.avatar }}">
