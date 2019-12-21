@@ -33,16 +33,21 @@
             <div class="ui ordered steps">
               {% include "includes/progress.html" %}
             </div>
-          
-          <div class="ui segment">
-            <div class="ui top attached label"><i class="copy icon"></i>Notes</div>
-            <pre class="content">{{ report.note }}</pre>
-          </div>
 
-          <div class="ui segment">
-            <div class="ui top attached label"><i class="archive icon"></i>Logs</div>
-            <pre class="content">{{ report.error_log }}</pre>
-          </div>
+            <div class="ui segment">
+              <div class="ui top attached label"><i class="list icon"></i>Todo List</div>
+              {% include "includes/todo_list.html" %}
+            </div>
+          
+            <div class="ui segment">
+              <div class="ui top attached label"><i class="copy icon"></i>Notes</div>
+              <pre class="content">{{ report.note }}</pre>
+            </div>
+
+            <div class="ui segment">
+              <div class="ui top attached label"><i class="archive icon"></i>Logs</div>
+              <pre class="content">{{ report.error_log }}</pre>
+            </div>
 
           <div class="ui segment">
             <div class="ui comments">

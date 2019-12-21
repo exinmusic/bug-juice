@@ -1,0 +1,13 @@
+  <div class="ui vertical steps">
+
+    {% for todo in report.todo_set.all %}
+    <div class="step">
+      <i class="info icon"></i>
+      <div class="content">
+        <div class="title">{{ todo.name }}</div>
+        <div class="description"></div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
