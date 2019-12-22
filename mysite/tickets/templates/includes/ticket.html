@@ -1,8 +1,6 @@
-{% for report in reports %}
-
 <div class="yellow card">
 	<div class="content">
-	  {% include "includes/icon.html" %}
+	  <i class="right floated black {% include 'includes/icon.html' %} icon"></i>
 	  <div class="header">
 		{{ report.name }}
 	  </div>
@@ -23,7 +21,7 @@
 			<tr>
 			  <td>
 				<i class="id badge icon"></i>
-				{{ report.reporter }}
+				{{ report.author }}
 			  </td>
 			</tr>
 		</tbody>
@@ -75,7 +73,6 @@
 	</div>
 </div>
 
-{% endfor %}
 
 {% if not reports %}
 <div class="card">nothing!</div>

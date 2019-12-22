@@ -13,18 +13,18 @@ def submit(request):
     # POST
     if request.method == "POST":
         report_data = {}
-        report_data['nickname'] = request.POST.get('nickname')
+        report_data['name'] = request.POST.get('name')
         report_data['report_type'] = request.POST.get('report_type')
         report_data['department'] = request.POST.get('department')
         report_data['description'] = request.POST.get('description')
-        report_data['reporter'] = request.user.username
+        report_data['author'] = request.user
         report_data['error_log'] = request.POST.get('error_log')
         report_data['note'] = request.POST.get('note')
-        models.Report.objects.create(nickname=report_data['nickname'],
+        models.Report.objects.create(name=report_data['name'],
 									report_type=report_data['report_type'],
 									department=report_data['department'],
 									description=report_data['description'],
-                                    reporter=report_data['reporter'],
+                                    author=report_data['author'],
                                     error_log=report_data['error_log'],
                                     note=report_data['note'])
         all_reports = models.Report.objects.filter(bug=False)                            
@@ -36,28 +36,34 @@ def submit(request):
 # MANAGE TICKETS
 @login_required
 def tickets(request):
+
     # POST
     if request.method == "POST":
         manage_req = request.POST.get('manage')
         report_id = request.POST.get('report_id')
         print("Ticket management...")
+
         # USERS SELECTS bug
         if manage_req == "bug":
             try:
                 entry = models.Report.objects.get(id=report_id)
                 entry.bug = True
                 entry.save()
-                all_reports = models.Report.objects.filter(bug=False)
-                return render(request, "tickets/tickets.html", {"reports":all_reports})
+                reports = models.Report.objects.filter(bug=False)
+                bugs = models.Report.objects.filter(bug=True)
+                return render(request, "tickets/tickets.html", {"reports":reports})
             except:
                 print('No report by that ID found...')
+
         # USERS SELECTS review
         if manage_req == "review":
             return redirect("reports/"+report_id)
+
     # GET
     else:
-        all_reports = models.Report.objects.filter(bug=False)
-        return render(request, "tickets/tickets.html", {"reports":all_reports})
+        reports = models.Report.objects.filter(bug=False)
+        bugs = models.Report.objects.filter(bug=True)
+        return render(request, "tickets/tickets.html", {"reports":reports, "bugs":bugs})
 
 # SOLVE BUGS
 @login_required

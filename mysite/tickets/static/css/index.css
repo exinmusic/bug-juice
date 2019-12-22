@@ -14,3 +14,8 @@ pre {
 .main.container {
     padding-top: 5em;
 }
+
+.three.stackable.cards {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}

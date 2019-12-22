@@ -3,10 +3,19 @@
 {% block content %}
 
 <div class="ui main container">
-  <div class="ui cards">
-
-    {% include "tickets/ticket.html" %}
-
+  <div class="ui grey inverted segment">
+    <a class="ui huge yellow ribbon label">Unconfirmed Reports</a>
+    <div class="ui three stackable cards">
+      {% for report in reports %}
+        {% include "includes/ticket.html" %}
+      {% endfor %}
+    </div>
+    <a class="ui huge yellow ribbon label">Confirmed as Bugs</a>
+    <div class="ui three stackable cards">
+      {% for report in bugs %}
+        {% include "includes/ticket.html" %}
+      {% endfor %}
+    </div>
   </div>
 </div>
 
