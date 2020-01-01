@@ -4,6 +4,23 @@
 
 <div class="ui main container">
   <div class="ui grey inverted segment">
+    
+    <div class="ui equal width grid">
+      <div class="column">
+        <div class="ui segment">
+          <a class="ui label">Unconfirmed Reports</a>
+          <div class="ct-chart ct-perfect-fourth"></div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="ui segment">
+          <div class="ct-chart ct-perfect-fourth"></div>
+        </div>
+      </div>
+      <div class="equal width row">
+      </div>
+    </div>
+
     <a class="ui huge yellow ribbon label">Unconfirmed Reports</a>
     <div class="ui three stackable cards">
       {% for report in reports %}
@@ -19,4 +36,19 @@
   </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Our labels and three data series
+var data = {
+  series: [
+    [5, 4, 3, 7, 5, 10],
+  ]
+};
+
+
+// All you need to do is pass your configuration as third parameter to the chart function
+new Chartist.Line('.ct-chart', data);
+</script>
 {% endblock %}

@@ -1,0 +1,101 @@
+{% extends "tickets/header.html" %}
+      {% block content %}
+      <div
+        class="sixteen wide mobile thirteen wide tablet thirteen wide computer right floated column"
+        id="content"
+      >
+        <a href="/submit" class="ui labeled icon button">
+          <i class="plus icon"></i>
+          File a ticket
+        </a>
+        <div class="ui padded grid">
+          <div class="row">
+            <h1 class="ui huge dividing header">Ticket Overview</h1>
+          </div>
+          <div class="center aligned row">
+            <div
+              class="eight wide mobile four wide tablet four wide computer column"
+            >
+              <div class="ui yellow statistic">
+                <div class="value">
+                  {{ reports.count }}
+                </div>
+                <div class="label">
+                  Unreviewed
+                </div>
+              </div>
+            </div>
+            <div
+              class="eight wide mobile four wide tablet four wide computer column"
+            >
+              <div class="ui yellow statistic">
+                <div class="value">
+                  {{ bugs.count }}
+                </div>
+                <div class="label">
+                  Bugs
+                </div>
+              </div>
+            </div>
+            <div
+              class="eight wide mobile four wide tablet four wide computer column"
+            >
+              <div class="ui yellow statistic">
+                <div class="value">
+                  {{ features }}
+                </div>
+                <div class="label">
+                  Features
+                </div>
+              </div>
+            </div>
+            <div
+              class="eight wide mobile four wide tablet four wide computer column"
+            >
+              <div class="ui green statistic">
+                <div class="value">
+                  {{ solutions.count }}
+                </div>
+                <div class="label">
+                  Solutions
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui hidden section divider"></div>
+          <div class="row">
+            <h1 class="ui huge dividing header">Recent Activity</h1>
+          </div>
+          <div class="row">
+            <table class="ui single line striped selectable unstackable table">
+              <thead>
+                <tr>
+                  <th>Date Created</th>
+                  <th>User</th>
+                  <th>Event</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for event in feed %}
+                <tr>
+                  <td>{{ event.created_date }}</td>
+                  <td>{{ event.author }}</td>
+                  {% if event.text %}
+                    <td>Commented on</td>
+                  {% else %}
+                    <td>File ticket</td>
+                  {% endif %}
+                  {% if event.text %}
+                    <td>{{event.report}}</td>
+                  {% else %}
+                    <td>{{ event.name }}</td>
+                  {% endif %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      {% endblock %}

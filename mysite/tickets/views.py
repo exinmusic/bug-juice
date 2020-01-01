@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from reports import models
+from itertools import chain
 
 # HOME
 def home(request):
@@ -51,7 +52,7 @@ def tickets(request):
                 entry.save()
                 reports = models.Report.objects.filter(bug=False)
                 bugs = models.Report.objects.filter(bug=True)
-                return render(request, "tickets/tickets.html", {"reports":reports})
+                return render(request, "tickets/dash.html", {"reports":reports, "bugs":bugs})
             except:
                 print('No report by that ID found...')
 
@@ -63,7 +64,15 @@ def tickets(request):
     else:
         reports = models.Report.objects.filter(bug=False)
         bugs = models.Report.objects.filter(bug=True)
-        return render(request, "tickets/tickets.html", {"reports":reports, "bugs":bugs})
+        solutions = models.Report.objects.filter(solved=True)
+        comments = models.Comment.objects.all()
+        feed = sorted(
+            chain(reports,bugs,solutions,comments),
+            key = lambda instance: instance.created_date,
+            reverse=True
+        )
+
+        return render(request, "tickets/dash.html", {"reports":reports, "bugs":bugs, "features":0, "solutions":solutions, "feed":feed})
 
 # SOLVE BUGS
 @login_required

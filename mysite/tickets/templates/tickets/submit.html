@@ -2,114 +2,78 @@
 
 {% block content %}
 
-<div class="ui main container">
+<div
+class="sixteen wide mobile thirteen wide tablet thirteen wide computer right floated column"
+id="content"
+>
+  <form id="open_report" action="/submit" method="POST">
+  {% csrf_token %}
+  <div class="ui form">
 
-  <div class="ui stackable two column divided grid container">
-    <div class="row">
-      <div class="column">
-        <div class="ui inverted segment">
-          <form id="open_report" action="/submit" method="POST">
-          {% csrf_token %}
-          <div class="ui inverted form">
+      <div class="field">
+        <label>Report label</label>
+        <input placeholder="Bug Nickname" type="text" name="name">
+      </div>
 
-              <div class="field">
-                <label>Report label</label>
-                <input placeholder="Bug Nickname" type="text" name="name">
-              </div>
-
-            <div class="inline fields">
-              <label for="fruit">Report type:</label>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="report_type" checked="" tabindex="0" class="hidden" value="bug">
-                  <label>Bug</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="report_type" tabindex="1" class="hidden" value="vulnerability">
-                  <label>Vulnerability</label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="report_type" tabindex="2" class="hidden" value="feature">
-                  <label>Feature</label>
-                </div>
-              </div>
-            </div>
-            
-            <div class="field">
-
-              <label>Department</label>
-              <div class="ui selection dropdown">
-                  <input type="hidden" name="department">
-                  <i class="dropdown icon"></i>
-                  <div class="default text">Whose to blame?</div>
-                  <div class="menu">
-                      <div class="item" data-value="Database">Database</div>
-                      <div class="item" data-value="Styling">Styling</div>
-                      <div class="item" data-value="Front-end">Front-end</div>
-                      <div class="item" data-value="Back-end">Back-end</div>
-                  </div>
-              </div>
-
-            </div>
-
-            <div class="field">
-              <label>Short Description</label>
-              <textarea placeholder="1-2 Sentences" rows="2" name="description"></textarea>
-            </div>
-
-            <div class="field">
-              <label>Logs</label>
-              <textarea placeholder="Crash/error logs" rows="4" name="error_log"></textarea>
-            </div>
-
-            <div class="field">
-              <label>Initial Note</label>
-              <textarea rows="4" name="note"></textarea>
-            </div>
-
-            <button class="ui yellow submit button" type="submit">Open a report</button>
-            
-          </div>
-          </form>
+    <div class="inline fields">
+      <label for="fruit">Report type:</label>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input type="radio" name="report_type" checked="" tabindex="0" class="hidden" value="bug">
+          <label>Bug</label>
         </div>
       </div>
-      <div class="column">
-        <div class="ui segment">
-              <div class="ui four statistics">
-                <div class="green statistic">
-                  <div class="value">
-                    22
-                  </div>
-                  <div class="label">
-                    Solutions
-                  </div>
-                </div>
-                <div class="statistic">
-                  <div class="text value">
-                    Three<br>
-                    Thousand
-                  </div>
-                  <div class="label">
-                    Features
-                  </div>
-                </div>
-                <div class="statistic">
-                  <div class="value">
-                    <i class="bug icon"></i> 5
-                  </div>
-                  <div class="label">
-                    Bugs
-                  </div>
-                </div>
-              </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input type="radio" name="report_type" tabindex="1" class="hidden" value="vulnerability">
+          <label>Vulnerability</label>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui radio checkbox">
+          <input type="radio" name="report_type" tabindex="2" class="hidden" value="feature">
+          <label>Feature</label>
         </div>
       </div>
     </div>
+    
+    <div class="field">
+
+      <label>Department</label>
+      <div class="ui selection dropdown">
+          <input type="hidden" name="department">
+          <i class="dropdown icon"></i>
+          <div class="default text">Whose to blame?</div>
+          <div class="menu">
+              <div class="item" data-value="Database">Database</div>
+              <div class="item" data-value="Styling">Styling</div>
+              <div class="item" data-value="Front-end">Front-end</div>
+              <div class="item" data-value="Back-end">Back-end</div>
+          </div>
+      </div>
+
+    </div>
+
+    <div class="field">
+      <label>Short Description</label>
+      <textarea placeholder="1-2 Sentences" rows="2" name="description"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Logs</label>
+      <textarea placeholder="Crash/error logs" rows="4" name="error_log"></textarea>
+    </div>
+
+    <div class="field">
+      <label>Initial Note</label>
+      <textarea rows="4" name="note"></textarea>
+    </div>
+
+    <button class="ui yellow submit button" type="submit">Open a report</button>
+    
   </div>
+  </form>
+
 
 </div>
 
