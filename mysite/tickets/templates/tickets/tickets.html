@@ -2,38 +2,31 @@
 
 {% block content %}
 
-<div class="ui main container">
-  <div class="ui grey inverted segment">
-    
-    <div class="ui equal width grid">
-      <div class="column">
-        <div class="ui segment">
-          <a class="ui label">Unconfirmed Reports</a>
-          <div class="ct-chart ct-perfect-fourth"></div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="ui segment">
-          <div class="ct-chart ct-perfect-fourth"></div>
-        </div>
-      </div>
-      <div class="equal width row">
-      </div>
-    </div>
+<div
+class="sixteen wide mobile thirteen wide tablet thirteen wide computer right floated column"
+id="content"
+>
 
-    <a class="ui huge yellow ribbon label">Unconfirmed Reports</a>
+    <div class="row">
+      <h1 class="ui huge dividing header">Unconfirmed Reports</h1>
+    </div>
+    <div class="ui hidden divider"></div>
     <div class="ui three stackable cards">
       {% for report in reports %}
         {% include "includes/ticket.html" %}
       {% endfor %}
     </div>
-    <a class="ui huge yellow ribbon label">Confirmed as Bugs</a>
+    <div class="ui hidden divider"></div>
+    <div class="row">
+      <h1 class="ui huge dividing header">Confirmed as Bugs</h1>
+    </div>
+    <div class="ui hidden divider"></div>
     <div class="ui three stackable cards">
       {% for report in bugs %}
         {% include "includes/ticket.html" %}
       {% endfor %}
     </div>
-  </div>
+
 </div>
 
 {% endblock %}

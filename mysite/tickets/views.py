@@ -34,6 +34,18 @@ def submit(request):
     else:
         return render(request, "tickets/submit.html")
 
+def dash(request):
+    reports = models.Report.objects.filter(bug=False)
+    bugs = models.Report.objects.filter(bug=True)
+    solutions = models.Report.objects.filter(solved=True)
+    comments = models.Comment.objects.all()
+    feed = sorted(
+        chain(reports,bugs,solutions,comments),
+        key = lambda instance: instance.created_date,
+        reverse=True
+    )
+    return render(request, "tickets/dash.html", {"reports":reports, "bugs":bugs, "features":0, "solutions":solutions, "feed":feed})
+
 # MANAGE TICKETS
 @login_required
 def tickets(request):
@@ -52,7 +64,7 @@ def tickets(request):
                 entry.save()
                 reports = models.Report.objects.filter(bug=False)
                 bugs = models.Report.objects.filter(bug=True)
-                return render(request, "tickets/dash.html", {"reports":reports, "bugs":bugs})
+                return render(request, "tickets/tickets.html", {"reports":reports, "bugs":bugs})
             except:
                 print('No report by that ID found...')
 
@@ -72,7 +84,7 @@ def tickets(request):
             reverse=True
         )
 
-        return render(request, "tickets/dash.html", {"reports":reports, "bugs":bugs, "features":0, "solutions":solutions, "feed":feed})
+        return render(request, "tickets/tickets.html", {"reports":reports, "bugs":bugs, "features":0, "solutions":solutions, "feed":feed})
 
 # SOLVE BUGS
 @login_required

@@ -20,8 +20,8 @@
           <div class="item">
             <div class="ui small input"><input placeholder="Search..." /></div>
           </div>
-          <a href="/tickets" class="item">Dashboard</a> <a class="item">Settings</a>
-          <a class="item">Profile</a> <a class="item">Help</a>
+          <a href="/dash" class="item">Dashboard</a> <a class="item">Settings</a>
+          <a href="/users/profile" class="item">Profile</a> <a class="item">Help</a>
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="ui vertical borderless inverted fluid menu">
-          <a href="/tickets" class="item">Dashboard</a> <a class="item">Settings</a>
+          <a href="/dash" class="item">Dashboard</a> <a class="item">Settings</a>
           <a class="item">Profile</a> <a class="item">Help</a>
           <div class="ui fitted divider"></div>
           <div class="item">
@@ -51,9 +51,7 @@
         id="sidebar"
       >
         <div class="ui vertical borderless fluid text menu">
-          <a href="/tickets" class="active item">Overview</a> <a class="item">Reports</a>
-          <a class="item">Analytics</a> <a class="item">Export</a>
-          <!-- <div class="ui hidden divider"></div> -->
+          <a href="/dash" class="{% if request.META.PATH_INFO == '/dash' %}active {% endif %}item">Overview</a> <a href="/tickets" class="{% if request.META.PATH_INFO == '/tickets' %}active {% endif %}item">Reports</a>
         </div>
       </div>
 
