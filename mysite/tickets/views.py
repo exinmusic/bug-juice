@@ -16,11 +16,12 @@ def submit(request):
         report_data = {}
         report_data['name'] = request.POST.get('name')
         report_data['report_type'] = request.POST.get('report_type')
-        report_data['department'] = request.POST.get('department')
+        report_data['department'] = request.POST.getlist('department')
         report_data['description'] = request.POST.get('description')
         report_data['author'] = request.user
         report_data['error_log'] = request.POST.get('error_log')
         report_data['note'] = request.POST.get('note')
+        print(report_data)
         models.Report.objects.create(name=report_data['name'],
 									report_type=report_data['report_type'],
 									department=report_data['department'],
@@ -34,6 +35,7 @@ def submit(request):
     else:
         return render(request, "tickets/submit.html")
 
+@login_required
 def dash(request):
     reports = models.Report.objects.filter(bug=False)
     bugs = models.Report.objects.filter(bug=True)
@@ -70,7 +72,7 @@ def tickets(request):
 
         # USERS SELECTS review
         if manage_req == "review":
-            return redirect("reports/"+report_id)
+            return redirect("/reports/"+report_id)
 
     # GET
     else:

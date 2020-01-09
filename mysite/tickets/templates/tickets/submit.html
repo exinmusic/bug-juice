@@ -6,27 +6,20 @@
 class="sixteen wide mobile thirteen wide tablet thirteen wide computer right floated column"
 id="content"
 >
+  <div class="row">
+    <h1 class="ui huge dividing header">New Ticket</h1>
+  </div>
+  <div class="ui hidden divider"></div>
   <form id="open_report" action="/submit" method="POST">
   {% csrf_token %}
-  <div class="ui form">
-
-      <div class="field">
-        <label>Report label</label>
-        <input placeholder="Bug Nickname" type="text" name="name">
-      </div>
+  <option class="ui form">
 
     <div class="inline fields">
-      <label for="fruit">Report type:</label>
+      <label for="fruit">Type of ticket:</label>
       <div class="field">
         <div class="ui radio checkbox">
           <input type="radio" name="report_type" checked="" tabindex="0" class="hidden" value="bug">
           <label>Bug</label>
-        </div>
-      </div>
-      <div class="field">
-        <div class="ui radio checkbox">
-          <input type="radio" name="report_type" tabindex="1" class="hidden" value="vulnerability">
-          <label>Vulnerability</label>
         </div>
       </div>
       <div class="field">
@@ -36,21 +29,23 @@ id="content"
         </div>
       </div>
     </div>
+
+      <div class="field">
+        <label>Ticket Name</label>
+        <input placeholder="Quirky Bug Nickname Here" type="text" name="name">
+      </div>
+
+
     
     <div class="field">
 
       <label>Department</label>
-      <div class="ui selection dropdown">
-          <input type="hidden" name="department">
-          <i class="dropdown icon"></i>
-          <div class="default text">Whose to blame?</div>
-          <div class="menu">
-              <div class="item" data-value="Database">Database</div>
-              <div class="item" data-value="Styling">Styling</div>
-              <div class="item" data-value="Front-end">Front-end</div>
-              <div class="item" data-value="Back-end">Back-end</div>
-          </div>
-      </div>
+      <select multiple="multiple" size="4" class="ui fluid dropdown" name=department>
+              <option value="Database">Database</option>
+              <option value="Styling">Styling</option>
+              <option value="Front-end">Front-end</option>
+              <option value="Back-end">Back-end</option>
+      </select>
 
     </div>
 

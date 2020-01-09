@@ -1,10 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from multiselectfield import MultiSelectField
 
 
 TYPE_CHOICES = (
 	("Bug","Bug"),
-    ("Vulnerability","Vulnerability"),
 	("Feature request","Feature Request"),
 )
 
@@ -21,8 +21,8 @@ class Report(models.Model):
     description = models.TextField(max_length=600)
     created_date = models.DateTimeField(auto_now_add=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    report_type = models.CharField(max_length=16, choices=TYPE_CHOICES, default='bug')
-    department = models.CharField(max_length=16, choices=DEPARTMENT_CHOICES, default='back')
+    report_type = models.CharField(max_length=16, choices=TYPE_CHOICES, default='Bug')
+    department = MultiSelectField(max_length=100, choices=DEPARTMENT_CHOICES, default='Back-end')
     error_log = models.TextField(max_length=600, default="")
     note = models.TextField(max_length=600, default="")
     bug = models.BooleanField(default=False)

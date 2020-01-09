@@ -17,7 +17,7 @@ def login(request):
         print(username)
         if user is not None:
             login_user(request, user)
-            return redirect("/tickets")
+            return redirect("/dashboard")
         else:
             # Return an 'invalid login' error message.
             return render(request, "users/login.html")

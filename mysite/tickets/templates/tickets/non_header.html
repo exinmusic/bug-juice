@@ -5,16 +5,9 @@
   
   <body id="root">
     
-    {% include "includes/bar_top.html" %}
-
-    <div class="ui padded grid">
-
-      {% include "includes/bar_side.html" %}
-
-	    {% block content %}
-      {% endblock %}
+	{% block content %}
+  {% endblock %}
       
-    </div>
   {% include "includes/scripts.html" %}
 
 	{% block scripts %}
