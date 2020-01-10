@@ -1,20 +1,49 @@
 {% extends "tickets/non_header.html" %}
-
+{% load static %}
 {% block content %}
 
 <div
 class="sixteen wide mobile thirteen wide tablet thirteen wide computer right floated column"
 id="content"
 >
-		<div class="ui inverted vertical masthead center aligned segment">
-			<div class="ui text container">
-				<h1 class="ui yellow header">
-					Bug Juice
-				</h1>
-				<h2>Track bugs manually and via web API!</h2>
-				<div class="ui huge yellow button">I will fuck a bug<i class="right arrow icon"></i></div>
+
+		<h1 class="ui center aligned inverted header">
+			<i class="yellow lemon icon"></i> Bug Juice
+		</h1>
+
+		<h2 class="ui center aligned inverted header">Simple progress tracking for teams and their clients.</h2>
+
+		<div class="ui hidden divider"></div>
+
+		<div class="ui inverted center aligned segment sharpbg">
+
+				<div class="ui hidden divider"></div>
+					  <div class="ui three column grid">
+						<div class="column">
+						 
+							<img src="{% static 'images/report.svg' %}" width="150em">
+							<h1>Report</h1>
+						 
+						</div>
+						<div class="column">
+						  
+							<img src="{% static 'images/track.svg' %}" width="150em">
+							<h1>Track</h1>
+						
+						</div>
+						<div class="column">
+						
+							<img src="{% static 'images/solve.svg' %}" width="150em">
+							<h1>Solve</h1>
+						
+						</div>
+					  </div>
+					  <div class="ui hidden divider"></div>
+					  <h3>Bug Juice is a simple system for teams and their users to actively track bugs and features.</h3>
+					  <div class="ui hidden divider"></div>
+				<a href="/users/login" class="ui huge blue inverted button"><i class="plus icon"></i> Sign up and start tracking!</a>				
 			</div>
-		</div>
+
 </div>
 
 {% endblock %}
