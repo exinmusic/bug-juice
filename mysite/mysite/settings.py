@@ -26,7 +26,8 @@ SECRET_KEY = 'ezwulykc0#%55dxiy_unihu201^s61^2bv0bq^y4tswb4b!82#'
 DEBUG = True
 
 ALLOWED_HOSTS = ['juice-env.regt65sjib.us-west-2.elasticbeanstalk.com',
-                '127.0.0.1']
+                '127.0.0.1',
+                '192.168.0.35']
 
 
 # Application definition
