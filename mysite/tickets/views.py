@@ -6,7 +6,10 @@ from itertools import chain
 
 # HOME
 def home(request):
-    return render(request, "tickets/home.html")
+    if request.user.is_authenticated:
+        return redirect("/dashboard")
+    else:
+        return render(request, "tickets/home.html")
 
 # SUBMIT TICKET
 @login_required
@@ -29,7 +32,7 @@ def submit(request):
                                     author=report_data['author'],
                                     error_log=report_data['error_log'],
                                     note=report_data['note'])
-        all_reports = models.Report.objects.filter(bug=False)                            
+        all_reports = models.Report.objects.filter(confirmed=False)                            
         return render(request, "tickets/tickets.html", {"reports":all_reports})
     # GET
     else:
@@ -37,8 +40,9 @@ def submit(request):
 
 @login_required
 def dash(request):
-    reports = models.Report.objects.filter(bug=False)
-    bugs = models.Report.objects.filter(bug=True)
+    reports = models.Report.objects.filter(confirmed=False)
+    bugs = models.Report.objects.filter(confirmed=True,report_type='Bug')
+    features = models.Report.objects.filter(confirmed=True,report_type='Feature')
     solutions = models.Report.objects.filter(solved=True)
     comments = models.Comment.objects.all()
     feed = sorted(
@@ -46,7 +50,7 @@ def dash(request):
         key = lambda instance: instance.created_date,
         reverse=True
     )
-    return render(request, "tickets/dash.html", {"reports":reports, "bugs":bugs, "features":0, "solutions":solutions, "feed":feed})
+    return render(request, "tickets/dash.html", {"reports":reports, "bugs":bugs, "features":features, "solutions":solutions, "feed":feed})
 
 # MANAGE TICKETS
 @login_required
@@ -64,8 +68,8 @@ def tickets(request):
                 entry = models.Report.objects.get(id=report_id)
                 entry.bug = True
                 entry.save()
-                reports = models.Report.objects.filter(bug=False)
-                bugs = models.Report.objects.filter(bug=True)
+                reports = models.Report.objects.filter(confirmed=False)
+                bugs = models.Report.objects.filter(confirmed=True,report_type='bug')
                 return render(request, "tickets/tickets.html", {"reports":reports, "bugs":bugs})
             except:
                 print('No report by that ID found...')
@@ -76,8 +80,9 @@ def tickets(request):
 
     # GET
     else:
-        reports = models.Report.objects.filter(bug=False)
-        bugs = models.Report.objects.filter(bug=True)
+        reports = models.Report.objects.filter(confirmed=False)
+        bugs = models.Report.objects.filter(confirmed=True,report_type='Bug')
+        features = models.Report.objects.filter(confirmed=True,report_type='Feature')
         solutions = models.Report.objects.filter(solved=True)
         comments = models.Comment.objects.all()
         feed = sorted(
@@ -86,7 +91,7 @@ def tickets(request):
             reverse=True
         )
 
-        return render(request, "tickets/tickets.html", {"reports":reports, "bugs":bugs, "features":0, "solutions":solutions, "feed":feed})
+        return render(request, "tickets/tickets.html", {"reports":reports, "bugs":bugs, "features":features, "solutions":solutions, "feed":feed})
 
 # SOLVE BUGS
 @login_required

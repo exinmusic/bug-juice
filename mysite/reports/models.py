@@ -5,7 +5,7 @@ from multiselectfield import MultiSelectField
 
 TYPE_CHOICES = (
 	("Bug","Bug"),
-	("Feature request","Feature Request"),
+	("Feature","Feature"),
 )
 
 DEPARTMENT_CHOICES = (
@@ -25,7 +25,7 @@ class Report(models.Model):
     department = MultiSelectField(max_length=100, choices=DEPARTMENT_CHOICES, default='Back-end')
     error_log = models.TextField(max_length=600, default="")
     note = models.TextField(max_length=600, default="")
-    bug = models.BooleanField(default=False)
+    confirmed = models.BooleanField(default=False)
     solved = models.BooleanField(default=False)
 
     def __str__(self):
