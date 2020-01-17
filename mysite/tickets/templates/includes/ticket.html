@@ -57,11 +57,12 @@
 		</tbody>
 	  </table>
 	</div>
+	{% if not report.solved %}
 	<div class="extra content">
 	  <form method="POST" action='/reports/manage/{{ report.id }}'>
 	  {% csrf_token %}
 	  <div class="ui three buttons">
-		  
+		
 		  <button class="ui yellow button" type="submit" name="selection" value="Close">Close</button>
 
 		  <button class="ui yellow button" type="submit" name="selection" value="Review">Review</button>
@@ -74,4 +75,5 @@
 	  </div>
 	  </form>
 	</div>
+	{% endif %}
 </div>
