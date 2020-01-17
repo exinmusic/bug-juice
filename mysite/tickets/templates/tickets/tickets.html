@@ -31,6 +31,16 @@ id="content"
         {% include "includes/ticket.html" %}
       {% endfor %}
     </div>
+    <div class="ui hidden divider"></div>
+    <div class="row">
+      <h1 class="ui huge dividing header">Confirmed as Features</h1>
+    </div>
+    <div class="ui hidden divider"></div>
+    <div class="ui three stackable cards">
+      {% for report in features %}
+        {% include "includes/ticket.html" %}
+      {% endfor %}
+    </div>
 
 </div>
 

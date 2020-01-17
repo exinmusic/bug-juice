@@ -58,24 +58,20 @@
 	  </table>
 	</div>
 	<div class="extra content">
-	  <form method="POST" action='/dashboard/tickets'>
+	  <form method="POST" action='/reports/manage/{{ report.id }}'>
 	  {% csrf_token %}
 	  <div class="ui three buttons">
 		  
-		  <button class="ui yellow button" type="submit" name="manage" value="solve">Close</button>
+		  <button class="ui yellow button" type="submit" name="selection" value="Close">Close</button>
 
-		  <button class="ui yellow button" type="submit" name="manage" value="review">Review</button>
+		  <button class="ui yellow button" type="submit" name="selection" value="Review">Review</button>
 
-		  <input hidden="true" name="report_id" value="{{ report.id }}" />
-		  <button class="ui yellow button" type="submit" name="manage" value="bug">Bug</button>
+		  {% if report.confirmed %}
+		  <button class="ui green button" type="submit" name="selection" value="Solve">Solve</button>
+		  {% else %}
+		  <button class="ui yellow button" type="submit" name="selection" value="Confirm">Confirm</button>
+		  {% endif %}
 	  </div>
 	  </form>
 	</div>
 </div>
-
-
-{% if not reports %}
-<div class="card">nothing!</div>
-
-
-{% endif %}

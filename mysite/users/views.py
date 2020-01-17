@@ -44,8 +44,8 @@ def profile(request):
     reports = request.user.report_set.all()
     feed = sorted(
         chain(comments,reports),
-        key = lambda instance: instance.created_date
+        key = lambda instance: instance.created_date,
+        reverse=True
     )
-
 
     return render(request, "users/profile.html", {"feed":feed})

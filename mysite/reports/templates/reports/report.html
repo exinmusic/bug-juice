@@ -72,7 +72,7 @@ id="content"
               </div>
               {% endfor %}
  
-              <form class="ui large form" action="/reports/{{ report.id }}" method="POST">
+              <form class="ui large form" action="/reports/comment/{{ report.id }}" method="POST">
                 {% csrf_token %}
                 <div class="field">
                   <textarea name="text"></textarea>
@@ -83,10 +83,6 @@ id="content"
               </form>
             </div>   
           </div>                           
-          
-
-
-
 
           {% include "includes/buttons.html" %}
 
