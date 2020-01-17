@@ -16,11 +16,16 @@ DEPARTMENT_CHOICES = (
     ("Back-end","Back-end"),
 )
 
+class Project(models.Model):
+    name=models.CharField(max_length=35)
+
+
 class Report(models.Model):
     name = models.CharField(max_length=25)
     description = models.TextField(max_length=600)
     created_date = models.DateTimeField(auto_now_add=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, default=1)
     report_type = models.CharField(max_length=16, choices=TYPE_CHOICES, default='Bug')
     department = MultiSelectField(max_length=100, choices=DEPARTMENT_CHOICES, default='Back-end')
     error_log = models.TextField(max_length=600, default="")
@@ -36,6 +41,7 @@ class Comment(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True, blank=True)
     approved_comment = models.BooleanField(default=False)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, default=1) 
     report = models.ForeignKey(Report, on_delete=models.CASCADE)
 
     def __str__(self):

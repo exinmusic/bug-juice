@@ -16,7 +16,7 @@ def home(request):
 def submit(request):
     # POST
     if request.method == "POST":
-        models.Report.objects.create(name=request.POST.get('name'),
+        models.Project.objects.get(id=request.user.profile.project.id).report_set.create(name=request.POST.get('name'),
 									report_type=request.POST.get('report_type'),
 									department=request.POST.getlist('department'),
 									description=request.POST.get('description'),
@@ -31,11 +31,12 @@ def submit(request):
 # DASHBOARD
 @login_required
 def dash(request):
-    reports = models.Report.objects.filter(confirmed=False,solved=False)
-    bugs = models.Report.objects.filter(confirmed=True,solved=False,report_type='Bug')
-    features = models.Report.objects.filter(confirmed=True,solved=False,report_type='Feature')
-    solutions = models.Report.objects.filter(solved=True)
-    comments = models.Comment.objects.all()
+    project = models.Project.objects.get(id=request.user.profile.project.id)
+    reports = project.report_set.filter(confirmed=False,solved=False)
+    bugs = project.report_set.filter(confirmed=True,solved=False,report_type='Bug')
+    features = project.report_set.filter(confirmed=True,solved=False,report_type='Feature')
+    solutions = project.report_set.filter(solved=True)
+    comments = project.comment_set.all()
     feed = sorted(
         chain(reports,bugs,features,solutions,comments),
         key = lambda instance: instance.created_date,

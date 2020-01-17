@@ -1,13 +1,46 @@
-{% extends "tickets/header.html" %}
-
+{% extends "tickets/non_header.html" %}
+{% load static %}
 {% block content %}
 
-<div class="ui main container">
-  <div class="ui inverted vertical masthead center aligned segment">
-    <div class="ui text container">
-     signup
-    </div>
-  </div>
+<div
+class="sixteen wide mobile thirteen wide tablet thirteen wide computer right floated column"
+id="content"
+>
+
+		<h1 class="ui center aligned inverted header">
+			<i class="yellow lemon icon"></i> Bug Juice
+		</h1>
+
+		<h2 class="ui center aligned inverted header">Will you create or join a project?</h2>
+
+		<div class="ui hidden divider"></div>
+
+		<div class="ui inverted center aligned segment sharpbg">
+
+				<div class="ui hidden divider"></div>
+					  <div class="ui two column stackable grid">
+						<div class="column">
+						 
+							
+							<h1 class="ui yellow inverted header">Create</h1>
+							<p>a new project.</p>
+						 
+            </div>
+
+						<div class="column">
+						  
+							
+							<h1 class="ui blue inverted header">Join</h1>
+							<p>an existing project.</p>
+						
+						</div>
+					  </div>
+
+				<div class="ui hidden divider"></div>			
+		</div>
+		
+
+
 </div>
 
 {% endblock %}

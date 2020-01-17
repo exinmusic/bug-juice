@@ -33,9 +33,6 @@ def logout(request):
     logout_user(request)
     return redirect("/users/login")
 
-def signup(request):
-    return render(request, "users/signup.html")
-
 @login_required
 def profile(request):
 
@@ -49,3 +46,6 @@ def profile(request):
     )
 
     return render(request, "users/profile.html", {"feed":feed})
+
+def signup(request):
+    return render(request, "users/signup.html")
