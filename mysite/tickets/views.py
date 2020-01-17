@@ -31,9 +31,9 @@ def submit(request):
 # DASHBOARD
 @login_required
 def dash(request):
-    reports = models.Report.objects.filter(confirmed=False)
-    bugs = models.Report.objects.filter(confirmed=True,report_type='Bug')
-    features = models.Report.objects.filter(confirmed=True,report_type='Feature')
+    reports = models.Report.objects.filter(confirmed=False,solved=False)
+    bugs = models.Report.objects.filter(confirmed=True,solved=False,report_type='Bug')
+    features = models.Report.objects.filter(confirmed=True,solved=False,report_type='Feature')
     solutions = models.Report.objects.filter(solved=True)
     comments = models.Comment.objects.all()
     feed = sorted(
@@ -46,15 +46,13 @@ def dash(request):
 # MANAGE TICKETS
 @login_required
 def tickets(request):
-    reports = models.Report.objects.filter(confirmed=False)
-    bugs = models.Report.objects.filter(confirmed=True,report_type='Bug')
-    features = models.Report.objects.filter(confirmed=True,report_type='Feature')
-    solutions = models.Report.objects.filter(solved=True)
-    comments = models.Comment.objects.all()
-    feed = sorted(
-        chain(reports,bugs,solutions,comments),
-        key = lambda instance: instance.created_date,
-        reverse=True
-    )
+    reports = models.Report.objects.filter(confirmed=False,solved=False)
+    bugs = models.Report.objects.filter(confirmed=True,solved=False,report_type='Bug')
+    features = models.Report.objects.filter(confirmed=True,solved=False,report_type='Feature')
 
-    return render(request, "tickets/tickets.html", {"reports":reports, "bugs":bugs, "features":features, "solutions":solutions, "feed":feed})
+    return render(request, "tickets/tickets.html", {"reports":reports, "bugs":bugs, "features":features})
+
+@login_required
+def solutions(request):
+    solutions = models.Report.objects.filter(solved=True)
+    return render(request, "tickets/tickets.html", {"solutions":solutions})

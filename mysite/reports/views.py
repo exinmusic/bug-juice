@@ -33,11 +33,16 @@ def manage(request, rid):
 
         # USERS SELECTS Close
         if manage_req == "Close":
-            return redirect("/reports/"+report_id)
+            entry = models.Report.objects.get(id=report_id)
+            entry.delete()
+            return redirect("/dashboard/tickets")
 
         # USERS SELECTS Solve
         if manage_req == "Solve":
-            return redirect("/reports/"+report_id)
+            entry = models.Report.objects.get(id=report_id)
+            entry.solved = True
+            entry.save()
+            return redirect("/dashboard/tickets")
 
 @login_required
 def comment(request, rid):

@@ -11,7 +11,7 @@ id="content"
     Start a New Ticket
   </a>
   <div class="ui hidden divider"></div>
-
+    {% if reports %}
     <div class="row">
       <h1 class="ui huge dividing header">Unconfirmed Reports</h1>
     </div>
@@ -22,6 +22,8 @@ id="content"
       {% endfor %}
     </div>
     <div class="ui hidden divider"></div>
+    {% endif %}
+    {% if bugs %}
     <div class="row">
       <h1 class="ui huge dividing header">Confirmed as Bugs</h1>
     </div>
@@ -32,6 +34,8 @@ id="content"
       {% endfor %}
     </div>
     <div class="ui hidden divider"></div>
+    {% endif %}
+    {% if features %}
     <div class="row">
       <h1 class="ui huge dividing header">Confirmed as Features</h1>
     </div>
@@ -41,7 +45,20 @@ id="content"
         {% include "includes/ticket.html" %}
       {% endfor %}
     </div>
-
+    <div class="ui hidden divider"></div>
+    {% endif %}
+    {% if solutions %}
+    <div class="row">
+      <h1 class="ui huge dividing header">Solved Reports</h1>
+    </div>
+    <div class="ui hidden divider"></div>
+    <div class="ui three stackable cards">
+      {% for report in solutions %}
+        {% include "includes/ticket.html" %}
+      {% endfor %}
+    </div>
+    <div class="ui hidden divider"></div>
+    {% endif %}
 </div>
 
 {% endblock %}
