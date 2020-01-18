@@ -3,7 +3,7 @@
 {% block content %}
 
 <div
-class="sixteen wide mobile thirteen wide tablet thirteen wide computer right floated column"
+class="ui container"
 id="content"
 >
 
@@ -11,32 +11,26 @@ id="content"
 			<i class="yellow lemon icon"></i> Bug Juice
 		</h1>
 
-		<h2 class="ui center aligned inverted header">Will you create or join a project?</h2>
-
 		<div class="ui hidden divider"></div>
 
-		<div class="ui inverted center aligned segment sharpbg">
-
+		<div class="ui inverted center aligned very padded segment sharpbg">
+		  <h2 class="ui center aligned inverted header">New User! New project?</h2>
 				<div class="ui hidden divider"></div>
 					  <div class="ui two column stackable grid">
-						<div class="column">
-						 
-							
-							<h1 class="ui yellow inverted header">Create</h1>
-							<p>a new project.</p>
-						 
-            </div>
+              <div class="column">
+                <div onclick="window.location.href = '/users/create';" class="massive fluid ui yellow inverted button">
+                  <h1>Create</h1>
+                  <p>a new project.</p>
+                </div >
+              </div>
 
-						<div class="column">
-						  
-							
-							<h1 class="ui blue inverted header">Join</h1>
-							<p>an existing project.</p>
-						
-						</div>
-					  </div>
-
-				<div class="ui hidden divider"></div>			
+						  <div class="column">
+                <div onclick="window.location.href = '/users/join';" class="massive fluid ui blue inverted button">
+							    <h1>Join</h1>
+							    <p>an existing project.</p>
+						    </div>
+						  </div>
+					  </div>		
 		</div>
 		
 

@@ -44,7 +44,7 @@ def dash(request):
     )
     return render(request, "tickets/dash.html", {"reports":reports, "bugs":bugs, "features":features, "solutions":solutions, "feed":feed})
 
-# MANAGE TICKETS
+# TICKETS VIEW
 @login_required
 def tickets(request):
     reports = models.Report.objects.filter(confirmed=False,solved=False)
@@ -53,6 +53,7 @@ def tickets(request):
 
     return render(request, "tickets/tickets.html", {"reports":reports, "bugs":bugs, "features":features})
 
+# SOLUTIONS VIEW
 @login_required
 def solutions(request):
     solutions = models.Report.objects.filter(solved=True)

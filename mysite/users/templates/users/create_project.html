@@ -1,0 +1,39 @@
+{% extends "tickets/non_header.html" %}
+{% load static %}
+{% block content %}
+
+<div
+class="ui container"
+id="content"
+>
+	<h1 class="ui center aligned inverted header">
+		<i class="yellow lemon icon"></i> Bug Juice
+	</h1>
+
+	<div class="ui hidden divider"></div>
+	<div class="ui form">
+		<div class="ui padded segment sharpbg">
+			<div class="field">
+				<div class="ui massive inverted transparent input">
+					<input type="text" placeholder="Project Name">
+				</div>
+			</div>
+		</div>
+		<div class="ui inverted center aligned padded segment sharpbg">
+			<div class="field">
+				<div class="ui massive inverted transparent input">
+					<input type="text" placeholder="Username">
+				</div>
+			</div>
+		</div>
+		<div class="ui inverted center aligned padded segment sharpbg">
+			<div class="field">
+				<div class="ui massive inverted transparent input">
+					<input type="password" placeholder="Password">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

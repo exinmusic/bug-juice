@@ -5,6 +5,7 @@ from django.contrib.auth import login as login_user
 from django.contrib.auth import logout as logout_user
 from django.contrib.auth.decorators import login_required
 from . import models
+from reports.models import Project
 from itertools import chain
 
 # LOGIN
@@ -28,11 +29,13 @@ def login(request):
         else:
             return render(request, "users/login.html")
 
+# LOGOUT
 @login_required
 def logout(request):
     logout_user(request)
     return redirect("/users/login")
 
+# USER PROFILE
 @login_required
 def profile(request):
 
@@ -47,5 +50,25 @@ def profile(request):
 
     return render(request, "users/profile.html", {"feed":feed})
 
+# SIGNUP
 def signup(request):
     return render(request, "users/signup.html")
+
+# CREATE NEW USER+PROJECT
+def create(request):
+    # POST
+    if request.method == "POST":
+        instance = Project.objects.create(
+                    name = request.POST.get('')
+                    )
+        instance.objects.user_set.create(
+                    username = request.POST.get(''),
+                    password = request.POST.get('')
+                    )
+
+        return render(request, "users/create_project.html")
+    # GET
+    else:
+        return render(request, "users/create_project.html")
+
+# JOIN EXISTING PROJECT w/ NEW USER
