@@ -58,15 +58,14 @@ def signup(request):
 def create(request):
     # POST
     if request.method == "POST":
-        instance = Project.objects.create(
-                    name = request.POST.get('')
+        p = Project.objects.create(
+                    name = request.POST.get('project')
                     )
-        instance.objects.user_set.create(
-                    username = request.POST.get(''),
-                    password = request.POST.get('')
-                    )
+        u = models.User.objects.create_user( request.POST.get('username'), request.POST.get('email'), request.POST.get('password') )
+        u.profile.project = p
+        u.save()
 
-        return render(request, "users/create_project.html")
+        return redirect("/users/login")
     # GET
     else:
         return render(request, "users/create_project.html")

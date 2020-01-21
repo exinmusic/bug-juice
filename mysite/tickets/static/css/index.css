@@ -84,3 +84,7 @@ body {
   .divider.bigger {
     margin-bottom: 10em;
   }
+
+  .force_yellow {
+    color: #fbbd08 !important;
+  }

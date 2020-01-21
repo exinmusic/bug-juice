@@ -11,29 +11,38 @@ id="content"
 	</h1>
 
 	<div class="ui hidden divider"></div>
-	<div class="ui form">
+	<form class="ui form" action="/users/create" method="POST">
+		{% csrf_token %}
 		<div class="ui padded segment sharpbg">
 			<div class="field">
 				<div class="ui massive inverted transparent input">
-					<input type="text" placeholder="Project Name">
+					<input class="force_yellow" type="text" placeholder="Project Name" name="project">
 				</div>
 			</div>
 		</div>
 		<div class="ui inverted center aligned padded segment sharpbg">
 			<div class="field">
 				<div class="ui massive inverted transparent input">
-					<input type="text" placeholder="Username">
+					<input class="force_yellow" type="text" placeholder="Username" name="username">
 				</div>
 			</div>
 		</div>
 		<div class="ui inverted center aligned padded segment sharpbg">
 			<div class="field">
 				<div class="ui massive inverted transparent input">
-					<input type="password" placeholder="Password">
+					<input class="force_yellow" type="password" placeholder="Password" name="password">
 				</div>
 			</div>
 		</div>
-	</div>
+		<div class="ui center aligned padded segment sharpbg">
+			<div class="field">
+				<div class="ui massive transparent input">
+					<input class="force_yellow" type="email" placeholder="Email" name="email">
+				</div>
+			</div>
+		</div>
+		<button type="submit" class="ui fluid large yellow submit button">Start Tracking!</button>
+	</form>
 </div>
 
 {% endblock %}
