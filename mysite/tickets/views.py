@@ -47,8 +47,9 @@ def dash(request):
 # TICKETS VIEW
 @login_required
 def tickets(request):
-    reports = models.Report.objects.filter(confirmed=False,solved=False)
-    bugs = models.Report.objects.filter(confirmed=True,solved=False,report_type='Bug')
+    project = models.Project.objects.get(id=request.user.profile.project.id)
+    reports = project.report_set.filter(confirmed=False,solved=False)
+    bugs = project.report_set.filter(confirmed=True,solved=False,report_type='Bug')
     features = models.Report.objects.filter(confirmed=True,solved=False,report_type='Feature')
 
     return render(request, "tickets/tickets.html", {"reports":reports, "bugs":bugs, "features":features})
@@ -56,5 +57,6 @@ def tickets(request):
 # SOLUTIONS VIEW
 @login_required
 def solutions(request):
-    solutions = models.Report.objects.filter(solved=True)
+    project = models.Project.objects.get(id=request.user.profile.project.id)
+    solutions = project.report_set.filter(solved=True)
     return render(request, "tickets/tickets.html", {"solutions":solutions})

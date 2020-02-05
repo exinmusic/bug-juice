@@ -71,3 +71,16 @@ def create(request):
         return render(request, "users/create_project.html")
 
 # JOIN EXISTING PROJECT w/ NEW USER
+def join(request):
+    # POST
+    if request.method == "POST":
+        p = Project.objects.get(name=request.POST.get('project'))
+        if p:
+            u = models.User.objects.create_user( request.POST.get('username'), request.POST.get('email'), request.POST.get('password') )
+            u.profile.project = p
+            u.save()
+
+            return redirect("/users/login")
+    # GET
+    else:
+        return render(request, "users/join_project.html")

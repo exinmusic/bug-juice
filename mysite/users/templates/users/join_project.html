@@ -1,0 +1,48 @@
+{% extends "tickets/non_header.html" %}
+{% load static %}
+{% block content %}
+
+<div
+class="ui container"
+id="content"
+>
+	<h1 class="ui center aligned inverted header">
+		<i class="yellow lemon icon"></i> Bug Juice
+	</h1>
+
+	<div class="ui hidden divider"></div>
+	<form class="ui form" action="/users/join" method="POST">
+		{% csrf_token %}
+		<div class="ui padded segment sharpbg">
+			<div class="field">
+				<div class="ui massive inverted transparent input">
+					<input class="force_yellow" type="text" placeholder="Project Name" name="project">
+				</div>
+			</div>
+		</div>
+		<div class="ui inverted center aligned padded segment sharpbg">
+			<div class="field">
+				<div class="ui massive inverted transparent input">
+					<input class="force_yellow" type="text" placeholder="Username" name="username">
+				</div>
+			</div>
+		</div>
+		<div class="ui inverted center aligned padded segment sharpbg">
+			<div class="field">
+				<div class="ui massive inverted transparent input">
+					<input class="force_yellow" type="password" placeholder="Password" name="password">
+				</div>
+			</div>
+		</div>
+		<div class="ui center aligned padded segment sharpbg">
+			<div class="field">
+				<div class="ui massive transparent input">
+					<input class="force_yellow" type="email" placeholder="Email" name="email">
+				</div>
+			</div>
+		</div>
+		<button type="submit" class="ui fluid large yellow submit button">Join Team!</button>
+	</form>
+</div>
+
+{% endblock %}
