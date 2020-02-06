@@ -1,13 +1,18 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 from . import models
 
 @login_required
 def report(request, rid):
-    # CURRENT REPORT
+    # Check user is member of this Project
     r = models.Report.objects.get(id=rid)
-    return render(request, "reports/report.html", {"report":r})
+    if r.project.profile_set.filter(id=request.user.profile.id):
+        # CURRENT REPORT
+        return render(request, "reports/report.html", {"report":r})
+    else:
+        raise PermissionDenied
 
 @login_required
 def manage(request, rid):

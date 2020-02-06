@@ -58,14 +58,17 @@ def signup(request):
 def create(request):
     # POST
     if request.method == "POST":
-        p = Project.objects.create(
-                    name = request.POST.get('project')
-                    )
-        u = models.User.objects.create_user( request.POST.get('username'), request.POST.get('email'), request.POST.get('password') )
-        u.profile.project = p
-        u.save()
-
-        return redirect("/users/login")
+        # If existing project.
+        if not Project.objects.filter(name=request.POST.get('project')):
+            # Create New Project
+            p = Project.objects.create(
+                        name = request.POST.get('project')
+                        )
+            # Create New User in Project
+            u = models.User.objects.create_user( request.POST.get('username'), request.POST.get('email'), request.POST.get('password') )
+            u.profile.project = p
+            u.save()
+            return redirect("/users/login")
     # GET
     else:
         return render(request, "users/create_project.html")
@@ -75,6 +78,7 @@ def join(request):
     # POST
     if request.method == "POST":
         p = Project.objects.get(name=request.POST.get('project'))
+        # If Project exists
         if p:
             u = models.User.objects.create_user( request.POST.get('username'), request.POST.get('email'), request.POST.get('password') )
             u.profile.project = p
