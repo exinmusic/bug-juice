@@ -57,8 +57,9 @@
 		</tbody>
 	  </table>
 	</div>
-	{% if not report.solved %}
+	
 	<div class="extra content">
+	  {% if not report.solved %}	
 	  <form method="POST" action='/reports/manage/{{ report.id }}'>
 	  {% csrf_token %}
 	  <div class="ui three buttons">
@@ -74,6 +75,9 @@
 		  {% endif %}
 	  </div>
 	  </form>
+	  {% else %}
+	  <a class="fluid ui yellow button" href="/reports/{{ report.id }}">Review</a>
+	  {% endif %}	  
 	</div>
-	{% endif %}
+
 </div>

@@ -19,7 +19,7 @@ def report(request, rid):
         # CURRENT REPORT
         return render(request, "reports/report.html", {"report":models.Report.objects.get(id=rid)})
 
-    else: raise PermissionDenied
+    else: raise PermissionDenied("If this is a valid report, you're not allowed to see it...")
 
 
 @login_required
@@ -60,7 +60,7 @@ def manage(request, rid):
                 entry.save()
                 return redirect("/dashboard/tickets")
 
-    else: raise PermissionDenied
+    else: raise PermissionDenied("If this is a valid report, you're not allowed to see it...")
 
 
 @login_required
@@ -78,4 +78,21 @@ def comment(request, rid):
                 report = r
             )
             return render(request, "reports/report.html", {"report":r})        
-    else: raise PermissionDenied
+    else: raise PermissionDenied("If this is a valid report, you're not allowed to see it...")
+
+@login_required
+def todo(request, rid):
+    # CHECK MEMBERSHIP
+    if report_member(request.user,rid):
+        # CURRENT REPORT
+        r = models.Report.objects.get(id=rid)
+
+        # POST
+        if request.method == "POST":
+            models.Todo.objects.create(
+                author = request.user,
+                name = request.POST.get('name'),
+                report = r
+            )
+            return render(request, "reports/report.html", {"report":r})        
+    else: raise PermissionDenied("If this is a valid report, you're not allowed to see it...")

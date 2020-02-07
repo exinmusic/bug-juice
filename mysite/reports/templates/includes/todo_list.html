@@ -1,13 +1,26 @@
-  <div class="ui vertical steps">
-
-    {% for todo in report.todo_set.all %}
-    <div class="step">
-      <i class="info icon"></i>
-      <div class="content">
-        <div class="title">{{ todo.name }}</div>
-        <div class="description"></div>
+<div class="ui grid">
+  <div class="six wide column">
+    <div class="ui vertical steps">
+      {% for todo in report.todo_set.all %}
+      <div class="step">
+        <i class="info icon"></i>
+        <div class="content">
+          <div class="title">{{ todo.name }}</div>
+          <div class="description"></div>
+        </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-
   </div>
+
+  <div class="ten wide column">
+    <form class="ui form" action="/reports/todo/{{ report.id }}" method="POST">
+      {% csrf_token %}
+      <div class="field">
+        <label>New Task</label>
+        <input type="text" name="name" placeholder="e.g. Cook the cat">
+      </div>
+      <button class="ui button" type="submit">Add to list!</button>
+    </form>    
+  </div>
+</div>

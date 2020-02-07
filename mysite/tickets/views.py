@@ -50,7 +50,7 @@ def tickets(request):
     project = models.Project.objects.get(id=request.user.profile.project.id)
     reports = project.report_set.filter(confirmed=False,solved=False)
     bugs = project.report_set.filter(confirmed=True,solved=False,report_type='Bug')
-    features = models.Report.objects.filter(confirmed=True,solved=False,report_type='Feature')
+    features = project.report_set.filter(confirmed=True,solved=False,report_type='Feature')
 
     return render(request, "tickets/tickets.html", {"reports":reports, "bugs":bugs, "features":features})
 
@@ -60,3 +60,9 @@ def solutions(request):
     project = models.Project.objects.get(id=request.user.profile.project.id)
     solutions = project.report_set.filter(solved=True)
     return render(request, "tickets/tickets.html", {"solutions":solutions})
+
+def permission_denied_view(request, exception):
+    return render(request, "tickets/error.html", {"exception":exception,"code":403})
+
+def not_found_view(request, exception):
+    return render(request, "tickets/error.html", {"exception":exception,"code":404})

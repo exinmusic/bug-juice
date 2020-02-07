@@ -1,0 +1,28 @@
+{% extends "tickets/non_header.html" %}
+{% load static %}
+{% block content %}
+
+<div class="ui container" id="content">
+	<div class="ui inverted segment sharpbg">
+		<div class="ui stackable grid">
+			<div class="eight wide column">
+				<img src="https://http.cat/{{ code }}" width="100%">
+			</div>
+			<div class="eight wide column">
+				<h1 class="ui yellow header">{{ code }}</h1>
+				<span class="ui grey medium header">Exception: </span>
+				{% if code == 404 %}
+				<p>Not Found</p>
+				{% else %}
+				<p>{{ exception }}</p>
+				{% endif %}
+				<span class="ui grey medium header">Your name: </span>
+				<p>{{ user.username }}</p>
+				<span class="ui grey medium header">Your project: </span>
+				<p>{{ user.profile.project.name }}</p>
+			</div>				
+		</div>
+	</div>
+</div>
+
+{% endblock %}
