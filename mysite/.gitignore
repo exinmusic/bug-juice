@@ -5,3 +5,4 @@
 !.elasticbeanstalk/*.global.yml
 .ebextensions
 /static
+private.py
