@@ -39,16 +39,20 @@ id="content"
               <div class="ui top attached label"><i class="list icon"></i>Todo List</div>
               {% include "includes/todo_list.html" %}
             </div>
-          
+            
+            {% if report.note %}
             <div class="ui segment">
               <div class="ui top attached label"><i class="copy icon"></i>Notes</div>
               <pre class="content">{{ report.note }}</pre>
             </div>
+            {% endif %}
 
+            {% if report.error_log %}
             <div class="ui segment">
               <div class="ui top attached label"><i class="archive icon"></i>Logs</div>
               <pre class="content">{{ report.error_log }}</pre>
             </div>
+            {% endif %}
 
           <div class="ui segment">
             <div class="ui comments">
