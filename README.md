@@ -1,2 +1,5 @@
 # bug-juice
-Bug tracker with a focus on converting Python logs into bug reports.
+Simple progress and bugtracking for teams.
+
+Live development:
+138.197.201.195
